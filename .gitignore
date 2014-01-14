@@ -2,6 +2,7 @@ node_modules
 public
 .tmp
 .sass-cache
+lib/config/env
 app/bower_components
 heroku
 /views
