@@ -5,8 +5,10 @@
     "express": "~3.4.3",
     "lodash": "~2.4.1",
     "mongoose": "~3.5.5",
+    "socket.io": "latest",
     "mongoose-unique-validator": "~0.3.0",
     "connect-mongo": "~0.4.0",
+    "connect-flash": "latest",
     "passport": "latest",
     "passport-local": "latest",
     "passport-facebook": "latest",
@@ -48,7 +50,7 @@
     "connect-livereload": "~0.3.0"
   },
   "engines": {
-    "node": ">=0.8.0"
+    "node": ">=0.10.0"
   },
   "scripts": {
     "test": "grunt test"
