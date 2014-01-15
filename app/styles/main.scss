@@ -1,4 +1,16 @@
-$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+@import "compass/css3";
+@import "compass/css3/user-interface";
+@import "compass/css3/transition";
+$use-mozilla-ellipsis-binding: true;
+@import "compass/typography/text/ellipsis";
+@import 'mixins';
+
+
+$color-bg-01 : #FFF;
+$hex-facebook   : #3b5998;
+$hex-twitter    : #1DCAff;
+$hex-github     : #888;
+$hex-google     : #B00;
 
 .browsehappy {
     margin: 0.2em 0;
@@ -65,18 +77,83 @@ body {
     margin-top: 28px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-    .container {
-        max-width: 730px;
+
+
+
+
+.social-login{
+    color:#FFF;
+    a {  
+        display:block;
+        margin:6px;
+        color:#FFF;
+        vertical-align:baseline;
+        line-height:50px;
+        border:1px solid #CCC;
+        border-radius:5px;
+        font-weight:bold;
+        @include box-shadow(#666 2px 2px 6px);
+        &:hover{ text-decoration:none }
     }
 
-    /* Remove the padding we set earlier */
-    .header,
-    .marketing,
-    .footer {
-        padding-left: 0;
-        padding-right: 0;
+    .fa { line-height:50px; min-width:50px; height:50px; text-align:center; 
+        font-size:2.5em;
+        @include text-shadow(#222 0 0 2px);
+    }
+
+    .facebook{ 
+        a{ background:$hex-facebook;}
+       .fa { border-right:1px solid darken($hex-facebook,10%); }
+    }
+    .github{ 
+        a{ background:$hex-github;}
+        .fa { border-right:1px solid darken($hex-github,10%); }
+    }
+    .twitter{ 
+        a{ background:$hex-twitter;}
+        .fa { border-right:1px solid darken($hex-twitter,10%); }
+    }
+    .google{ 
+        a{ background:$hex-google;}
+        .fa { border-right:1px solid darken($hex-google,10%); }
+    }
+}
+
+
+
+.messenger {
+    position:fixed;
+    bottom:0;
+    right:20px;
+    .win {
+        background:$color-bg-01;
+        float:left;
+        width:240px;
+        min-height:240px;
+        border:1px solid #CCC;
+        margin-right:10px;
+         @include box-shadow(#666 2px 2px 6px);
+    }
+    .chat {
+    }
+    .users {
+        a { 
+            color: #999; 
+            img {  display:inline-block; border:1px solid #CCC; width:30px; height:30px;}
+            &.signed-in {
+                color:#000;
+                font-weight:bold;
+                img {border:1px solid #0C0;}
+            }   
+        }     
+    }
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    .collapse{
+        display: block;
     }
     /* Space out the masthead */
     .header {

@@ -1,0 +1,35 @@
+
+
+@mixin cubo($array, $img, $size:100) {
+    a {
+        background:#000 image-url($img) no-repeat;
+        display: inline-block;
+        width: $size;
+        height: $size;        
+        text-align:left;
+        text-indent: -99999px;
+    }
+    @each $item in $array {
+        $i: index($array, $item) - 1;
+        .#{$item} {
+            a { background-position: -$size*$i  0 }
+            a:hover {background-position: -$size*$i -32px;}
+        }            
+    }
+}
+
+@mixin keyframes($animationName) {
+
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}

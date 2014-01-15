@@ -1,0 +1,15 @@
+//$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+$h-font-family : "Bangers" !default;
+
+@import 'variables';
+@import 'sass-bootstrap/lib/bootstrap_custom';
+
+
+.clean {
+	font-style:normal;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; 
+	text-shadow:none;
+}
+
+h1,h2,h3 { font-family:$h-font-family;  }
