@@ -10,23 +10,48 @@
     <title>Dylan Lawrence</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+
+    <meta property="fb:app_id" content="216788918360053">
+    <meta property="og:title" content="#{appName} - #{title}">
+    <meta property="og:description" content="A Modern Stack: AngularJS, MongoDB, ExpressJS, NodeJS.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="APP_URL">
+    <meta property="og:image" content="APP_LOGO">
+    <meta property="og:site_name" content="MEAN - A Modern Stack">
+    <meta property="fb:admins" content="APP_ADMIN">
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
     <!-- endbower -->
     <!-- endbuild -->
+    
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <link href="http://fonts.googleapis.com/css?family=Bangers" rel="stylesheet" type="text/css">
+
+
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/boot.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/responsive.css">
     <!-- endbuild -->
   </head>
-  <body ng-app="angoApp">
+  <body ng-app="angoApp" ng-controller="GlobalCtrl">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
+
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl" ng-include="'partials/navbar'"></div>
+    
+    <div class="container" ng-include="'partials/alerts'"></div>
+
+    <div ng-view=""></div>
+
+    <div ng-include="'partials/footer'"></div>
+
+
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -53,10 +78,12 @@
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <!-- endbower -->
+    <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.9.0.js"></script>    
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/global.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/login.js"></script>
@@ -66,6 +93,7 @@
         <script src="scripts/services/session.js"></script>
         <script src="scripts/services/user.js"></script>
         <script src="scripts/directives/mongooseError.js"></script>
+        <script src="scripts/controllers/contact.js"></script>
         <!-- endbuild -->
-</body>
+</body> 
 </html>

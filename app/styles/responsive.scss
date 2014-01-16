@@ -1,0 +1,42 @@
+@import "compass/css3";
+@import "compass/css3/user-interface";
+@import "compass/css3/transition";
+$use-mozilla-ellipsis-binding: true;
+@import "compass/typography/text/ellipsis";
+@import 'mixins';
+@import 'variables';
+
+
+/* Small devices (tablets, 768px and up) */
+@media (max-width: $screen-sm-min) { 
+    .nav {
+        padding:2px 20px;
+        & > li { 
+            display:inline-block;
+            width:50%;
+            a{
+                margin:4px 10px;
+                padding:20px 0;
+                text-align:center;
+                background:#333; 
+            }
+        }
+    }
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: $screen-sm-min) { 
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: $screen-md-min) {  
+    
+
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: $screen-lg-min) { 
+
+}

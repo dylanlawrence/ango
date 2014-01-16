@@ -1,0 +1,4 @@
+<div class="alert alert-dismissable" ng-repeat="(k,v) in global.alerts" ng-class="{'alert-warning' : k == 'error'}">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <strong>{{v}}</strong>
+</div>

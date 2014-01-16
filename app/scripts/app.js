@@ -4,7 +4,8 @@ angular.module('angoApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.bootstrap'
 ])
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
     $routeProvider
@@ -24,6 +25,10 @@ angular.module('angoApp', [
         templateUrl: 'partials/settings',
         controller: 'SettingsCtrl',
         authenticate: true
+      })
+      .when('/contact', {
+        templateUrl: 'partials/contact',
+        controller: 'ContactCtrl'
       })
       .otherwise({
         redirectTo: '/'
