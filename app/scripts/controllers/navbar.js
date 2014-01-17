@@ -8,6 +8,12 @@ angular.module('angoApp')
     }, {
       'title': 'About',
       'link': '/about'
+    }, {
+      'title': 'Work',
+      'link': '/work'
+    }, {
+      'title': 'Contact',
+      'link': '/contact'
     }];
     
     $scope.logout = function() {

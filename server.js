@@ -3,6 +3,7 @@
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
+    http = require('http'),
     mongoose = require('mongoose');
 
 /**
@@ -30,7 +31,13 @@ require('./lib/config/dummydata');
 // Passport Configuration
 require('./lib/config/passport')();
 
-var app = express();
+var app = express(),
+  server = http.createServer(app),
+  io = require('socket.io').listen(server);
+
+// messenger
+var messages = [];
+require('./lib/controllers/messenger')(io, messages);
 
 // Express settings
 require('./lib/config/express')(app);
