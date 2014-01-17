@@ -6,8 +6,8 @@ angular.module('angoApp')
       'title': 'Home',
       'link': '/'
     }, {
-      'title': 'Settings',
-      'link': '/settings'
+      'title': 'About',
+      'link': '/about'
     }];
     
     $scope.logout = function() {

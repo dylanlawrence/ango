@@ -30,6 +30,18 @@ angular.module('angoApp', [
         templateUrl: 'partials/contact',
         controller: 'ContactCtrl'
       })
+      .when('/about', {
+        templateUrl: 'partials/about',
+        controller: 'AboutCtrl'
+      })
+      .when('/work', {
+        templateUrl: 'partials/work',
+        controller: 'WorkCtrl'
+      })
+      .when('/about', {
+        templateUrl: 'partials/about',
+        controller: 'AboutCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
