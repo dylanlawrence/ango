@@ -1,16 +1,16 @@
-
-<div class="jumbotron">
-  <p class="lead">
-  </p>
-</div>
-
-<div class="container">
-
-  <div class="row">
-    <div ng-repeat="w in work">
-        <h4>{{w.title}}</h4>
-        <p>{{w.body}}</p>
-    </div>
-  </div>
-
+<div class="page-work">
+	<div class="jumbotron">
+		<p></p>
+	</div>
+	<section class="page-main">
+		<div class="container page-mid">
+			<div class="row">
+				<div ng-repeat="w in work">
+					<h4>{{w.title}}</h4>
+					<p>{{w.user}}</p>
+					<p>{{w.content}}</p>
+				</div>
+			</div>
+		</div>
+	</section>
 </div>
