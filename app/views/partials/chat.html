@@ -1,0 +1,39 @@
+<div ng-controller="ChatCtrl">
+
+	<div class="messenger">
+
+
+		<div ng-repeat="c in chatWindows" class="chat win">
+			
+			<div class="list-unstyled messages">
+				<ul>
+					<li ng-repeat="m in messages">{{m}}</li>
+				</ul>
+			</div>
+
+			<form class="form-horizontal" ng-submit="send()">
+				<div>
+					<label for="message">Message</label>
+					<div>
+					<textarea class="form-control" ng-model="message" id="message" placeholder="Content"></textarea>
+					</div>
+	
+					<input type="submit" class="btn" value="SEND">
+				</div>
+			</form>
+		</div>
+
+		<div class="users win" ng-init="getUsers()">
+
+			<div class="list-group">
+			    <div class="list-group-item"><b class="list-group-item-heading">Header</b>
+					<button type="button" class="close fa fa-chevron-circle-down" aria-hidden="true"></button>
+			    </div>
+				<a href="" ng-repeat="user in users" class="list-group-item" ng-class="{'signed-in':user.signed_in}"> 
+				<img src=""/> {{user.name}}
+				</a>
+			</div>
+		</div>
+
+	</div>
+</div>

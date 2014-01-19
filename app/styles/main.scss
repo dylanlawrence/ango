@@ -23,7 +23,7 @@ body {
 
 #navMain {
 
-    &.navbar { background-color:#036}
+    //&.navbar { background-color:#036}
     .navbar-brand { padding:8px}
     button{
         color:#CCC;
@@ -39,17 +39,17 @@ body {
         @include transition-duration(500ms);
         @include transition-timing-function(ease);
     }
-    a { font-family:$h-font-family ;font-size:1.5em}
+    a { font-family:$h-font-family; font-size:1.2em}
 }
 
 .page-main {
-     background:#CCC image-url('booth-repeat.jpg');
+     //background:#CCC image-url('booth-repeat.jpg');
     .page-mid{
-        color:#fff;
+        //color:#fff;
         padding:20px;
-        background: #666 image-url('concrete-repeat.jpg');
+        //background: #666 image-url('concrete-repeat.jpg');
         min-height:500px;
-        @include text-shadow(#003 1px 1px 2px);
+        //@include text-shadow(#003 1px 1px 2px);
     }
 }
 

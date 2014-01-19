@@ -13,4 +13,5 @@ angular.module('angoApp')
         return meaningOfLife;
       }
     };
+    
   }]);
