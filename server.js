@@ -25,9 +25,9 @@ fs.readdirSync(modelsPath).forEach(function (file) {
   require(modelsPath + '/' + file);
 });
 
-// Populate empty DB with sample data
-require('./lib/config/dummydata');
-  
+// 	Populate empty DB with sample data
+//	require('./lib/config/dummydata');
+
 // Passport Configuration
 require('./lib/config/passport')();
 

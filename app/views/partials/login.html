@@ -1,11 +1,24 @@
 <div class="container">
 
-  <br/>
+  <div class="col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+  <h1>Login</h1>
+
   <div class="panel panel-default">
     <div class="panel-heading">Login</div>
     <div class="panel-body">
+      
       <div class="row">
-        <div class="col-md-4">
+
+        <div class="col-md-5">
+          <div ng-include="'partials/social-login'">
+          </div>
+        </div>
+
+        <div class="col-md-1">
+            <div></div>
+        </div>
+
+        <div class="col-md-6">
           <form class="form" name="form" ng-submit="login(form)" novalidate>
             <div class="form-group">
               <label>Email</label>
@@ -21,19 +34,22 @@
               </p>
               <p class="help-block">{{ errors.other }}</p>
             </div>
-            <button type="submit" class="btn btn-lg btn-primary">
+            <hr>
+            <button type="submit" class="btn btn-lg btn-primary" style="width:100%">
               Sign in
             </button>
           </form>
           <hr>
+          <div class="pull-right">
           Not registered?
           <a href="/signup" class="text-center new-account">Create an account.</a>
-        </div>
-        <div class="col-md-4">
-          <div ng-include="'partials/social-login'">
           </div>
         </div>
+
+
+
       </div>
     </div>
+  </div>
   </div>
 </div>
