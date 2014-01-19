@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('angoApp').controller('ChatCtrl', ['$scope', '$http', 'Global', 'Socket', 'Users', function($scope, $http, Global, Socket, Users) {
+angular.module('angoApp').controller('ChatCtrl', ['$scope', '$http', 'Global', 'Socket', 'User', function($scope, $http, Global, Socket, User) {
 
 	$scope.global = Global;
 
@@ -32,11 +32,15 @@ angular.module('angoApp').controller('ChatCtrl', ['$scope', '$http', 'Global', '
 
 
 	$scope.getUsers = function() {
-		Users.query({
+		
+		return User.getAll();
+
+		/**
+		User.query({
 			userId: 'all'
 		}, function(users) {
 			$scope.users = users;
-		});
+		});*/
 	};
 
 

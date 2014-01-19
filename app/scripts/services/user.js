@@ -13,6 +13,13 @@ angular.module('angoApp').factory('User', function($resource) {
       params: {
         id: 'me'
       }
+    },
+    getAll: {
+      method: 'GET',
+      params: {
+        id: 'all'
+      }
     }
+
   });
 });

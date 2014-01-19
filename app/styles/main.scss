@@ -6,25 +6,6 @@ $use-mozilla-ellipsis-binding: true;
 @import 'variables';
 @import 'mixins';
 
-$h-font-family : "Aldrich" !default;
-
-$color-bg-01 : #FFF;
-$color-bg-02 : #CCC;
-$color-bg-03 : #666;
-
-$hex-facebook    : #3b5998;
-$hex-facebook-02 : #6d84b4;
-$hex-twitter     : #1DCAff;
-$hex-twitter-02  : #00aced;
-$hex-github      : #888;
-$hex-google      : #dd4b39;
-$hex-youtube     : #bb0000;
-$hex-linkedin    : #007bb6;
-$hex-instagram   : #517fa4;
-$hex-pinterest   : #cb2027;
-$hex-flickr      : #ff0084;
-$hex-vimeo       : #aad450;
-
 
 body {
     padding-top: 52px;
@@ -100,35 +81,37 @@ body {
         color:#FFF;
         vertical-align:baseline;
         line-height:50px;
-        
         font-weight:bold;
         padding-right:5px;
         @include ellipsis;
         //@include box-shadow(#666 2px 2px 6px);
         //border-radius:5px;
         &:hover{ text-decoration:none }
+        //@include text-shadow(#222 1px 1px 1px);
     }
 
-    .fa { line-height:50px; min-width:50px; height:50px; text-align:center; 
-        font-size:2.5em;
-        @include text-shadow(#222 0 0 2px);
+    .fa { 
+        line-height:50px; 
+        min-width:50px; height:50px; 
+        text-align:center; 
+        font-size:2.5em;        
     }
 
     .facebook{ 
-        a{ background: lighten($hex-facebook,5%); border:1px solid darken($hex-facebook,10%);}
-       .fa {  background: $hex-facebook; border-right:1px solid darken($hex-facebook,10%); }
+        a{ background:$hex-facebook-light; border:1px solid $hex-facebook-dark;}
+       .fa { background: $hex-facebook; border-right:1px solid $hex-facebook-dark; }
     }
     .github{ 
-        a{ background:lighten($hex-github,5%); border:1px solid darken($hex-github,10%);}
-        .fa { background:$hex-github; border-right:1px solid darken($hex-github,10%); }
+        a{ background:$hex-github-light; border:1px solid $hex-github-dark;}
+        .fa { background:$hex-github; border-right:1px solid $hex-github-dark; }
     }
     .twitter{ 
-        a{ background:lighten($hex-twitter,5%); border:1px solid darken($hex-twitter,10%);}
-        .fa { background:$hex-twitter; border-right:1px solid darken($hex-twitter,10%); }
+        a{ background:$hex-twitter-light; border:1px solid $hex-twitter-dark; }
+        .fa { background:$hex-twitter; border-right:1px solid $hex-twitter-dark;  }
     }
     .google{ 
-        a{ background:lighten($hex-google,5%); border:1px solid darken($hex-google,10%);}
-        .fa { background: $hex-google; border-right:1px solid darken($hex-google,10%); }
+        a{ background:$hex-google-light; border:1px solid $hex-google-dark;}
+        .fa { background: $hex-google; border-right:1px solid $hex-google-dark; }
     }
 }
 
@@ -160,4 +143,10 @@ body {
             }   
         }     
     }
+}
+
+
+.work {
+
+
 }

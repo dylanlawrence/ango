@@ -1,17 +1,7 @@
 'use strict';
 
 angular.module('angoApp')
-  .factory('global', [function() {
-    // Service logic
-    // ...
+  .factory('Global', [function() {
 
-    var meaningOfLife = 42;
-
-    // Public API here
-    return {
-      someMethod: function() {
-        return meaningOfLife;
-      }
-    };
     
   }]);

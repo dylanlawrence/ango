@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title>Dylan Lawrence</title>
+    <title>Ango</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
@@ -27,7 +27,7 @@
     <!-- endbuild -->
     
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Aldrich' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
 
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/boot.css">
@@ -100,5 +100,20 @@
         <script src="scripts/services/global.js"></script>
         <script src="scripts/services/socket.js"></script>
         <!-- endbuild -->
+
+
+
+<script src="/scripts/socket.io.min.js"></script>
+<script>
+  //var socket = io.connect('http://dylanlawrence.com');
+  //alert('http://'+window.location.host);
+  var socket = io.connect('http://'+window.location.host);
+  socket.on('news', function (data) {
+    console.log(data);
+    socket.emit('my other event', { my: 'data' });
+  });
+</script>
+
+
 </body> 
 </html>

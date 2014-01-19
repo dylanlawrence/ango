@@ -1,6 +1,38 @@
 //
-// Variables
+// Ango Variables
 // --------------------------------------------------
+
+$color-bg-01 : #FFF;
+$color-bg-02 : #CCC;
+$color-bg-03 : #666;
+
+
+// Social HEX
+$hex-facebook: 				#3b5998;
+$hex-facebook-dark: 		darken($hex-facebook, 10%);
+$hex-facebook-light: 		#6d84b4;
+$hex-facebook-lighter: 		#afbdd4;
+$hex-twitter: 				#00aced;
+$hex-twitter-dark:			#0084b4;
+$hex-twitter-light: 		#1dcaff;
+$hex-github: 				#888;
+$hex-github-dark: 			#666;
+$hex-github-light: 			#999;
+$hex-google: 				#dd4b39;
+$hex-google-dark: 			darken($hex-google, 10%);
+$hex-google-light: 			lighten($hex-google, 5%);
+
+$hex-youtube: 				#bb0000;
+$hex-linkedin: 				#007bb6;
+$hex-instagram: 			#517fa4;
+$hex-pinterest: 			#cb2027;
+$hex-flickr: 				#ff0084;
+$hex-vimeo: 				#aad450;
+
+
+
+
+$h-font-family : "Ubuntu" !default;
 
 
 // Global values
@@ -59,7 +91,7 @@ $line-height-base:        1.428571429 !default; // 20/14
 $line-height-computed:    floor($font-size-base * $line-height-base) !default; // ~20px
 
 $headings-font-family:    $font-family-base !default;
-$headings-font-weight:    500 !default;
+$headings-font-weight:    700 !default;
 $headings-line-height:    1.1 !default;
 $headings-color:          inherit !default;
 
