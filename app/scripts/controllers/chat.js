@@ -33,8 +33,8 @@ angular.module('angoApp').controller('ChatCtrl', ['$scope', '$http', 'Global', '
 
 	$scope.getUsers = function() {
 		
-		return User.getAll();
-
+		$scope.users = User.getAll();
+		return $scope.users;
 		/**
 		User.query({
 			userId: 'all'

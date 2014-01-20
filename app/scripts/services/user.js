@@ -18,8 +18,10 @@ angular.module('angoApp').factory('User', function($resource) {
       method: 'GET',
       params: {
         id: 'all'
-      }
+      }, 
+      isArray: true
     }
 
   });
+
 });
