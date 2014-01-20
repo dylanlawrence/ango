@@ -48,6 +48,7 @@
 
     <div id="all">
         <div ng-view=""></div>
+        <div ng-include="'partials/postscript'"></div>
         <div ng-include="'partials/footer'"></div>
     </div>
 
@@ -103,7 +104,7 @@
 
 
 
-<script src="/scripts/socket.io.min.js"></script>
+<script src="scripts/socket.io.min.js"></script>
 <script>
   //var socket = io.connect('http://dylanlawrence.com');
   //alert('http://'+window.location.host);
@@ -112,6 +113,7 @@
     console.log(data);
     socket.emit('my other event', { my: 'data' });
   });
+  
 </script>
 
 

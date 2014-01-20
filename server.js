@@ -14,7 +14,8 @@ var express = require('express'),
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 // Application Config
-var config = require('./lib/config/config');
+var config = require('./lib/config/config'),
+	auth = require('./lib/config/authorization');
 
 // Connect to database
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
@@ -43,10 +44,10 @@ require('./lib/controllers/messenger')(io, messages);
 require('./lib/config/express')(app);
 
 // Routing
-require('./lib/routes')(app);
+require('./lib/routes')(app, auth);
 
 // Start server
-app.listen(config.port, function () {
+server.listen(config.port, function () {
   console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
 });
 
