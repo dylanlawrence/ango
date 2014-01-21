@@ -1,0 +1,24 @@
+
+<div class="container">
+
+<section ng-init="findOne()">
+
+    <span>{{article.created | date:'medium'}}</span>/
+    <span>{{article.user.name}}</span>
+
+    <h2>{{article.title}}</h2>
+
+    <div ng-show="currentUser">
+        <a class="btn btn-info" href="articles/{{article._id}}/edit">
+        	<i class="fa fa-edit"></i> Edit
+        </a>
+        <a class="btn btn-info" ng-click="remove();">
+            <i class="fa fa-trash-o"></i> Chuck it
+        </a>
+    </div>
+
+    <div>{{article.content}}</div>
+
+</section>
+
+</div>

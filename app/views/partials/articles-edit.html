@@ -1,0 +1,47 @@
+<div class="jumbotron">
+</div>
+<div class="container">
+
+	<section class="row" ng-init="findOne()">
+		<div class="col-sm-6">
+		</div>
+		<div class="col-sm-6">
+			<form class="form-horizontal" ng-submit="update()">
+				<div class="form-group">
+					<label for="title">
+						Title
+					</label>
+					<div>
+						<input class="form-control" type="text" ng-model="article.title" id="title" placeholder="Title"
+						required>
+						</input>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="content">
+						Content
+					</label>
+					<div>
+						<textarea class="form-control" ng-model="article.content" id="content" cols="30"
+						rows="10" placeholder="Content">
+						</textarea>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="title">
+						User
+					</label>
+					<div>
+						<input class="form-control" type="text" ng-model="article.user.name" id="title"
+						placeholder="Title" required>
+						</input>
+					</div>
+				</div>
+				<div>
+					<input type="submit" class="btn btn-primary" />
+				</div>
+			</form>
+		</div>
+
+	</section>
+</div>

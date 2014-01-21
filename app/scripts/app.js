@@ -42,6 +42,24 @@ angular.module('angoApp', [
         templateUrl: 'partials/about',
         controller: 'AboutCtrl'
       })
+
+     .when('/articles', {
+        templateUrl: 'partials/articles-list.html',
+        controller: 'ArticlesCtrl'
+      })
+      .when('/articles/create', {
+        templateUrl: 'partials/articles-create.html',
+        controller: 'ArticlesCtrl'
+      })
+      .when('/articles/:articleId', {
+        templateUrl: 'partials/articles-view.html',
+        controller: 'ArticlesCtrl'
+      })
+      .when('/articles/:articleId/edit', {
+        templateUrl: 'partials/articles-edit.html',
+        controller: 'ArticlesCtrl'
+      })
+
       .otherwise({
         redirectTo: '/'
       });

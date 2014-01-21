@@ -13,6 +13,9 @@ angular.module('angoApp')
       'title': 'Work',
       'link': '/work'
     }, {
+      'title': 'Blog',
+      'link': '/articles'
+    }, {
       'title': 'Contact',
       'link': '/contact'
     }];
