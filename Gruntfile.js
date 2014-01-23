@@ -43,7 +43,7 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        url: 'http://10.0.0.2:<%= express.options.port %>'
+        url: 'http://10.0.0.3:<%= express.options.port %>'
       }
     },
     watch: {
@@ -299,6 +299,7 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'bower_components/**/*',
+            '!bower_components/**/node_modules/*',
             'images/{,*/}*.{webp}',
             'fonts/**/*'
           ]

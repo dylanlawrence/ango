@@ -46,7 +46,7 @@
     
     <div class="container" ng-include="'partials/alerts'"></div>
 
-    <div id="all">
+    <div id="all" ng-cloak>
         <div ng-view=""></div>
         <div ng-include="'partials/postscript'"></div>
         <div ng-include="'partials/footer'"></div>
@@ -78,7 +78,7 @@
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
-<script src="bower_components/ng-file-upload/angular-file-upload.min.js"></script>
+<script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
 <!-- endbower -->
 <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.10.0.js"></script>    
 <!-- endbuild -->
@@ -104,6 +104,8 @@
 <script src="scripts/services/articles.js"></script>
 <script src="scripts/controllers/articles.js"></script>
 <script src="scripts/controllers/modal.js"></script>
+<script src="scripts/directives/ngThumb.js"></script>
+<script src="scripts/controllers/upload.js"></script>
 <!-- endbuild -->
 
 

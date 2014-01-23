@@ -13,6 +13,7 @@ body {
 
 .ellipsis {
   @include ellipsis;
+  display:block
 }
 
 #navMain {
@@ -145,13 +146,58 @@ body {
     }
 }
 
-
 .work {
-
-
 }
-
 .postscript{
     color:#CCC;
     background: $color-bg-03;
+}
+
+
+
+.upload {
+
+    .modal-body{
+        margin:10px;
+        background:#FCFCFC;
+        border:dashed 4px #DDD;
+        overflow:hidden;
+        &.ng-file-over {
+            background:#EEE;
+            border:dashed 4px #666;
+        }
+        .scrollwrap {
+            padding:10px;
+            border:solid 1px #DDD;
+            overflow-x:hidden;
+            overflow-y:auto;
+            max-height:280px;
+        }
+        .row{
+            padding-top:8px;
+            border-bottom:1px solid #DDD;
+        }
+        .actions {
+            margin-right:18px;
+        }
+    }
+    .modal-footer {
+        margin-top:0;
+    }
+
+    .drop-text {
+        text-align: center;
+        color:#666;
+    }
+
+    .upload-btn{
+        margin:5px auto;
+    }
+    input[type='file'] {
+      
+    }
+    input[type='file']:before{
+        content:"or Select Files "
+    }
+
 }

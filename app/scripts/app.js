@@ -39,11 +39,6 @@ angular.module('angoApp', [
         templateUrl: 'partials/work',
         controller: 'WorkCtrl'
       })
-      .when('/about', {
-        templateUrl: 'partials/about',
-        controller: 'AboutCtrl'
-      })
-
      .when('/articles', {
         templateUrl: 'partials/articles-list.html',
         controller: 'ArticlesCtrl'

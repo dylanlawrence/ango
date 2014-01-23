@@ -1,10 +1,15 @@
 'use strict';
 
 angular.module('angoApp')
-.controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', function ($scope, $routeParams, $location, Global, Articles) {
+.controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 
+    function ($scope, $routeParams, $location, Global, Articles) {
 
 
     $scope.global = Global;
+
+    $scope.new = function(){
+        $scope.article = {};
+    }
 
     $scope.create = function() {
         var article = new Articles({
@@ -64,7 +69,6 @@ angular.module('angoApp')
         }, function(article) {
             $scope.article = article;
         });
-
     };
 
   }]);

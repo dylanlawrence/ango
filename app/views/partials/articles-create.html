@@ -1,16 +1,46 @@
-<div class="container">
+<div class="container" ng-init="new()">
+	
 	<h1>Create Article</h1>
 	<div class="row">
 
-		<section class="col-sm-4 col-md-6">
-		    <div ng-controller="ModalCtrl">
-		    <button class="btn btn-default" ng-click="open()">Upload</button>
+		<section class="col-sm-4 col-md-6" ng-controller="ModalCtrl">
+
+		    <div class="well">
+
+		    	<button class="btn btn-default" ng-click="openUploadModal()">Upload</button>
+				
+				<ul class="list-unstyled">
+					<li class="row" ng-repeat="item in files">
+						
+						<div class="pull-right">
+							<div class="actions">
+								<button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+									<i class="fa fa-trash-o"></i>
+								</button>
+							</div>
+						</div>
+
+						<div class="col-xs-3 col-sm-2">
+							<div ng-show="uploader.isHTML5" ng-thumb="{file: item.file, height: 50, width: 50}"></div>
+						</div>
+
+						<div class="col-xs-9 col-sm-7">
+							<strong class="ellipsis" style="max-width:90%">
+								{{ item.file.name }}
+							</strong>						
+						</div>
+
+					</li>
+				</ul>
+
 		    </div>
+			
 		</section>
 
-		<section class="col-sm-8 col-md-6">
-
+		<section class="col-sm-8 col-md-6" >
+			
 			<form class="form-horizontal" ng-submit="create()">
+
 				<div class="form-group">
 					<label for="title">Title</label>
 					<div >
