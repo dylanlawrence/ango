@@ -4,10 +4,10 @@ angular.module('angoApp').controller('ModalCtrl', ['$scope', '$http', '$modal', 
   
   $scope.items = ['item1', 'item2', 'item3'];
   
-  $scope.openUploadModal = function() {
+  $scope.openMediaModal = function() {
     var modalInstance = $modal.open({
-      templateUrl: 'partials/upload-modal',
-      controller: 'UploadModalCtrl',
+      templateUrl: 'partials/media-modal',
+      controller: 'MediaModalCtrl',
       resolve: {
         items: function() {
           return $scope.items;
@@ -16,7 +16,7 @@ angular.module('angoApp').controller('ModalCtrl', ['$scope', '$http', '$modal', 
     });
 
     modalInstance.result.then(function (files) {
-        console.debug(files);
+        //console.debug(files);
         $scope.files = files;
     }, function () {
         $log.info('Modal dismissed at: ' + new Date());

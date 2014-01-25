@@ -1,0 +1,110 @@
+<div class="modal-content media-modal">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">
+			&times;
+		</button>
+		<h4 class="modal-title">
+			Media
+		</h4>
+	</div>
+	<div class="modal-body">
+		<tabset justified="true">
+			<tab heading="Upload">
+				<div class="upload" ng-file-drop ng-file-over ng-class="{'is-html5': uploader.isHTML5 }">
+					<div style="margin-bottom:20px">
+						<div class="drop-text" ng-show="uploader.isHTML5">
+							<h4>
+								<i class="fa fa-arrow-circle-o-down">
+								</i>
+								Drag Files Here
+							</h4>
+							<!-- div class="well my-drop-zone" ng-file-drop="{ url: '/foo' }" ng-file-over="another-file-over-class">Another drop zone with its own settings
+        	    </div -->
+						</div>
+						<input class="upload-btn" ng-file-select type="file" multiple/>
+						<em ng-show="uploader.queue.length != 0">
+							Total: {{ uploader.queue.length }}
+						</em>
+						<section class="scrollwrap" ng-show="uploader.queue.length != 0">
+							<ul class="list-unstyled">
+								<li class="row" ng-repeat="item in uploader.queue">
+									<div class="pull-right">
+										<div class="actions">
+											<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+												<i class="fa fa-upload">
+												</i>
+											</button>
+											<button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+												<i class="fa fa-ban">
+												</i>
+											</button>
+											<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+												<i class="fa fa-trash-o">
+												</i>
+											</button>
+										</div>
+									</div>
+									<div class="col-xs-3 col-sm-2">
+										<div ng-show="uploader.isHTML5" ng-thumb="{file: item.file, height: 50, width: 50}">
+										</div>
+									</div>
+									<div class="col-xs-9 col-sm-7">
+										<strong class="ellipsis" style="max-width:90%">
+											{{ item.file.name }}
+										</strong>
+										<progressbar value="item.progress" type="success">
+											<b>
+												{{item.progress}}%
+											</b>
+										</progressbar>
+									</div>
+								</li>
+							</ul>
+						</section>
+					</div>
+					<p>
+						<progressbar value="uploader.progress" type="success" ng-show="uploader.queue.length != 0">
+							<b>
+								{{uploader.progress}}%
+							</b>
+						</progressbar>
+					</p>
+				</div>
+				<!-- modal-body -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-success btn-s" ng-click="uploader.uploadAll()"
+					ng-disabled="!uploader.getNotUploadedItems().length">
+						<span class="fa fa-upload">
+						</span>
+						Upload all
+					</button>
+					<button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()"
+					ng-disabled="!uploader.isUploading">
+						<span class="fa fa-ban">
+						</span>
+						Cancel all
+					</button>
+					<button type="button" class="btn btn-danger btn-s" ng-click="uploader.clearQueue()"
+					ng-disabled="!uploader.queue.length">
+						<i class="fa fa-trash-o">
+						</i>
+						Remove all
+					</button>
+				</div>
+			</tab>
+
+			<tab heading="Files">
+				<div class="files">
+					<h3>Select Files</h3>
+					<ul class="list-inline">
+						<li data-id="{{v._id}}" ng-repeat="(k,v) in mediafiles" ng-click="selectFile()">
+							<img src="files/thumb/{{v.name}}.jpg"/>
+						</li>
+					</ul>
+				</div>
+			</tab>
+
+		</tabset>
+	</div>
+</div>
+<!-- /.modal-content -->

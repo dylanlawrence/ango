@@ -7,21 +7,23 @@
 
 		    <div class="well">
 
-		    	<button class="btn btn-default" ng-click="openUploadModal()">Upload</button>
+		    	<button class="btn btn-default" ng-click="openMediaModal()">Select Media</button>
 				
 				<ul class="list-unstyled">
 					<li class="row" ng-repeat="item in files">
 						
 						<div class="pull-right">
 							<div class="actions">
-								<button type="button" class="btn btn-default btn-xs" ng-click="item.remove()">
+								<button type="button" class="btn btn-link btn-xs" ng-click="item.remove()">
 									<i class="fa fa-trash-o"></i>
 								</button>
 							</div>
 						</div>
 
 						<div class="col-xs-3 col-sm-2">
-							<div ng-show="uploader.isHTML5" ng-thumb="{file: item.file, height: 50, width: 50}"></div>
+							<div>
+								<img src="files/thumb/{{item.file.name}}.jpg">
+							</div>
 						</div>
 
 						<div class="col-xs-9 col-sm-7">

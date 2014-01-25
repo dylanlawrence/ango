@@ -1,0 +1,53 @@
+
+Table for upload progress
+
+<table class="table" width="100%">
+	<table class="table" width="100%">
+		<tr>
+			<th width="40%">
+				Name
+			</th>
+			<th width="10%" ng-show="uploader.isHTML5">
+				Size
+			</th>
+			<th width="30%" ng-show="uploader.isHTML5">
+				Progress
+			</th>
+			<th width="20%">
+				Actions
+			</th>
+		</tr>
+	</table>
+	<tr ng-repeat="item in uploader.queue">
+		<td width="40%">
+			<strong class="ellipsis" style="max-width:140px">
+				{{ item.file.name }}
+			</strong>
+			<div style="width:10px" ng-show="uploader.isHTML5" ng-thumb="{file: item.file, height: 50, width: 50}">
+			</div>
+		</td>
+		<td width="10%" ng-show="uploader.isHTML5" nowrap>
+			{{ item.file.size/1024/1024|number:2 }} MB
+		</td>
+		<td width="30%" ng-show="uploader.isHTML5">
+			<div class="progress" style="margin-bottom: 0;">
+				<div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }">
+				</div>
+			</div>
+		</td>
+		<td width="20%" nowrap>
+			<button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+				<i class="fa fa-upload">
+				</i>
+			</button>
+			<button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+				<i class="fa fa-ban">
+				</i>
+			</button>
+			<button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+				<i class="fa fa-trash-o">
+				</i>
+			</button>
+		</td>
+	</tr>
+</table>
