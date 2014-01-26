@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('angoApp')
-  .factory('Global', [function() {
+angular.module('angoApp').factory('Global', [function() {
 
     
-  }]);
+    
+ }]);

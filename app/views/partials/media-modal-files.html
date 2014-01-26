@@ -1,0 +1,12 @@
+<div class="files">
+	<h3>Select Files</h3>
+
+	<ul class="list-inline">
+		<li data-id="{{v._id}}" ng-repeat="(k,v) in mediafiles" ng-click="selectFile($index)"
+		ng-class="{'selected':v.selected}">
+			<i ng-show="v.selected" class="fa fa-check">
+			</i>
+			<img src="files/thumb/{{v.name}}.jpg" />
+		</li>
+	</ul>
+</div>

@@ -4,24 +4,27 @@ angular.module('angoApp')
 .controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 
     function ($scope, $routeParams, $location, Global, Articles) {
 
-
     $scope.global = Global;
 
-    $scope.new = function(){
-        $scope.article = {};
-    }
+    $scope.media = [];
+    $scope.title = '';
+    $scope.content = '';
 
     $scope.create = function() {
-        var article = new Articles({
+        console.debug(this);
+        var article = new Articles({            
             title: this.title,
-            content: this.content
+            content: this.content,
+            media : this.media
         });
+
         article.$save(function(response) {
             $location.path('articles/' + response._id);
         });
 
         this.title = '';
         this.content = '';
+        this.media = '';
     };
 
     $scope.remove = function(article) {

@@ -158,11 +158,14 @@ body {
 .media-modal {
 
     .upload{
-        margin:10px;
-        background:#FCFCFC;
-        border:dashed 4px #DDD;
-        overflow:hidden;
-        &.ng-file-over {
+        .drop-box {
+            margin:10px 0;
+            padding:40px 10px;
+            background:#F0F0F0;
+            border:dashed 4px #DDD;
+            overflow:hidden;
+        }
+        .ng-file-over .drop-box {
             background:#EEE;
             border:dashed 4px #666;
         }
@@ -180,20 +183,42 @@ body {
         .actions {
             margin-right:18px;
         }
+        .drop-text {
+            text-align: center;
+            color:#666;
+        }
+        .upload-btn{
+            margin:5px auto;
+        }
     }
-
+    .files{
+        li{
+            position:relative;
+            margin:2px;
+            padding:2px;
+            border:1px solid #999;
+            &:hover {
+                border:1px solid #3D3;
+                cursor:pointer
+            }        
+            &.selected {
+                border:1px solid #3D3;
+            }
+            .fa-check{
+                font-size:2em;
+                position:absolute;
+                right:-8px;
+                top:-8px;
+                color:#0C0;
+                @include box-shadow(#FFF 0 0 20px inset);
+            }
+        }
+    }
     .modal-footer {
         margin-top:0;
     }
 
-    .drop-text {
-        text-align: center;
-        color:#666;
-    }
 
-    .upload-btn{
-        margin:5px auto;
-    }
     input[type='file'] {
       
     }

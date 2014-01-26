@@ -7,31 +7,42 @@ angular.module('angoApp').controller('UploadCtrl', ['$scope','$fileUploader',
 */
 
 
-angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$modalInstance', 'items', '$fileUploader', '$http', 
-  function($scope, $modalInstance, items, $fileUploader, $http) {
+angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$modalInstance', 'fileData', 'uploader', '$http', 
+  function($scope, $modalInstance, fileData, uploader, $http) {
 
-  $scope.mediafiles = {};
+  $scope.files = fileData.files;
+  $scope.mediaFiles = fileData.mediaFiles;
 
-  $http.get('/api/files').success(function(files) {
-      $scope.mediafiles = files;
-  });
+  $scope.selectedById = function(id){
+    angular.forEach($scope.mediaFiles, function(value, key){
+        console.debug(value._id);
+        if(value._id == id){
+            value.selected = true; 
+        }
+    });
+  }
 
-  $scope.selectFile = function(f){
-    //$scope.selected =
+  $scope.selectFile = function(index){
+    $scope.mediaFiles[index].selected = !$scope.mediaFiles[index].selected;
+  }
+
+  $scope.getSelected = function(index){
+    return $scope.mediaFiles[index].selected;
   }
 
   $scope.ok = function() {
-    $modalInstance.close($scope.selected.item);
+    var selected = {};
+    angular.forEach($scope.mediaFiles, function(value, key){
+        if(value.selected)
+            selected[key] = value;          
+    });
+    $modalInstance.close(selected);
   };
+
   $scope.cancel = function() {
     $modalInstance.dismiss('cancel');
   };
 
-  // Creates an uploader
-  var uploader = $scope.uploader = $fileUploader.create({
-    scope: $scope,
-    url: '/api/upload'
-  });
 
   // ADDING FILTERS
   // Images only
@@ -71,7 +82,7 @@ angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$modalInstanc
   uploader.bind('completeall', function(event, items) {
     //console.info('Complete all', items);
     if (this.progress > 99) {
-      $modalInstance.close(items);
+      $scope.ok();
     }
   });
 

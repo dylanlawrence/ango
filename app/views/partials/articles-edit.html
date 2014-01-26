@@ -4,11 +4,52 @@
 
 <div class="container">
 	<h1>Edit Article</h1>
-	<section class="row" ng-init="findOne()">
+
+
+
+
+	<div class="row" ng-init="findOne()">
 		
-		<div class="col-sm-3">
-		</div>
-		<div class="col-sm-9">
+		<section class="col-sm-4 col-md-6" ng-controller="ModalCtrl">
+
+		    <div class="well">
+
+		    	<button class="btn btn-default" ng-click="openMediaModal()">Select Media</button>
+				
+
+		    	<div class="media">
+
+				</div>
+
+
+				<ul class="list-unstyled">
+
+					<li class="media" ng-repeat="item in files">
+
+						<div class="pull-right">
+							<button type="button" class="btn btn-link btn-xs" ng-click="item.selected='false'">
+								<i class="fa fa-trash-o"></i>
+							</button>
+						</div>
+
+						<a class="pull-left" href="#">
+						  <img class="media-object" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="64px" height="64px">
+						</a>
+
+						<div class="media-body">
+						  <h4 class="media-heading ellipsis">{{ item.name }}</h4>
+						</div>
+						
+					</li>
+				</ul>
+
+
+		    </div>
+			
+		</section>
+
+		<section class="col-sm-8 col-md-6" >
+
 			<form class="form-horizontal" ng-submit="update()">
 				<div class="form-group">
 					<label for="title">
@@ -44,7 +85,7 @@
 					<input type="submit" class="btn btn-primary" />
 				</div>
 			</form>
-		</div>
 
-	</section>
+		</section>
+	</div>	
 </div>
