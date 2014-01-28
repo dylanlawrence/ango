@@ -1,18 +1,21 @@
 <div class="upload" ng-file-drop ng-file-over ng-class="{'is-html5': uploader.isHTML5 }">
 	
+	<h3>Upload Files</h3>
+	<p>
+		<b class="btn btn-info btn-xs" ng-click="callFileInput()">
+			<i class="fa fa-hand-o-up"></i> Browse for Files
+		</b>
+		<em>Hold <span class="label label-default">Ctrl</span> to select multiple files.</em>
+	</p>
 
-	<input class="upload-btn" ng-file-select type="file" multiple/>
-	<div class="drop-box" style="margin-bottom:20px">		
+	<input id="fileInput" ng-file-select type="file" multiple/>
 
-		<div class="drop-text" ng-show="uploader.isHTML5">
+	<div class="drop-box" style="margin-bottom:20px">
+
+		<div class="drop-text" ng-hide="uploader.queue.length != 0" >
 			<h4><i class="fa fa-arrow-circle-o-down"></i> Drag Files Here</h4>
-			<!-- div class="well my-drop-zone" ng-file-drop="{ url: '/foo' }" ng-file-over="another-file-over-class">Another drop zone with its own settings
-        	    </div -->
 		</div>
-	
-		<em ng-show="uploader.queue.length != 0">
-			Total: {{ uploader.queue.length }}
-		</em>
+
 		<section class="scrollwrap" ng-show="uploader.queue.length != 0">
 			<ul class="list-unstyled">
 				<li class="row" ng-repeat="item in uploader.queue">
@@ -47,28 +50,32 @@
 				</li>
 			</ul>
 		</section>
-	</div>
+		<em ng-show="uploader.queue.length != 0">
+			Total: {{ uploader.queue.length }}
+		</em>
+		<p>
+			<progressbar value="uploader.progress" type="success" ng-show="uploader.queue.length != 0">
+				<b>
+					{{uploader.progress}}%
+				</b>
+			</progressbar>
+		</p>
 
-	<p>
-		<progressbar value="uploader.progress" type="success" ng-show="uploader.queue.length != 0">
-			<b>
-				{{uploader.progress}}%
-			</b>
-		</progressbar>
-	</p>
+		<div class="actions pull-right" ng-show="uploader.queue.length != 0">
+			<button type="button" class="btn btn-xs" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
+				<span class="fa fa-upload"></span> Upload all
+			</button>
+			<button type="button" class="btn btn-xs" ng-click="uploader.cancelAll()"
+			ng-disabled="!uploader.isUploading">
+				<span class="fa fa-ban"></span> Cancel all
+			</button>
+			<button type="button" class="btn btn-xs" ng-click="uploader.clearQueue()"
+			ng-disabled="!uploader.queue.length">
+				<i class="fa fa-trash-o"></i> Remove all
+			</button>
+		</div>
 
-	<div class="actions pull-right">
-		<button type="button" class="btn btn-xs" ng-click="uploader.uploadAll()" ng-disabled="!uploader.getNotUploadedItems().length">
-			<span class="fa fa-upload"></span> Upload all
-		</button>
-		<button type="button" class="btn btn-xs" ng-click="uploader.cancelAll()"
-		ng-disabled="!uploader.isUploading">
-			<span class="fa fa-ban"></span> Cancel all
-		</button>
-		<button type="button" class="btn btn-xs" ng-click="uploader.clearQueue()"
-		ng-disabled="!uploader.queue.length">
-			<i class="fa fa-trash-o"></i> Remove all
-		</button>
-	</div>
+
+	</div><!-- drop-box -->
 
 </div><!-- upload -->

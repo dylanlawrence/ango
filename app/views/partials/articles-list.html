@@ -6,14 +6,28 @@
 	<p>
 	<a href="/articles/create" class="btn btn-primary" ng-href="/articles/create">New Article</a>
 	</p>
+<hr/>
+
 <section ng-init="find()">
 
 	<ul class="articles list-unstyled">
 		<li ng-repeat="article in articles">
+			<ul class="list-inline">
+				<li ng-repeat="m in article.media">
+					<a href="" class="thumbnail">
+					<img src="files/thumb/{{m.name}}.jpg" alt="{{m.name}}" width="64px" height="64px">
+					</a>
+				</li>				
+			</ul>
+			
+
 			<h2><a ng-href="articles/{{article._id}}">{{article.title}}</a></h2>
+			<p>
 			<span>{{article.created | date:'medium'}}</span> /
 			<span>{{article.user.name}}</span>
 			<div>{{article.content}}</div>
+			</p>
+			<hr/>
 		</li>
 	</ul>
 

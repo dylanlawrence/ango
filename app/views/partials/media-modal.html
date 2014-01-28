@@ -2,28 +2,33 @@
 
 	<div class="modal-header">
 		<button type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</button>
-		<h4 class="modal-title">Media {{mediaFiles}}</h4>
+		<h4 class="modal-title">Media</h4>
 		
 	</div>
 	<div class="modal-body">
+
 		<tabset justified="true">
-			<tab heading="Upload" select="selectTab('files')">
-				<div ng-include="src='partials/media-modal-upload.html'">
-				</div>
-			</tab>
-			<tab heading="Files" select="selectTab('files')">
-				<div ng-include="src='partials/media-modal-files.html'"></div>
-			</tab>
+
+		    <tab ng-repeat="tab in tabs" active="tab.active" disabled="tab.disabled">
+				<tab-heading>
+					<i class="fa {{tab.icon}}"></i>
+					{{tab.title}}
+				</tab-heading>
+		      	<div ng-include="tab.template"></div>	
+		    </tab>
+
 		</tabset>
+
 	</div>
 	<!-- modal-body -->
 	<div class="modal-footer">
-		<button type="button" class="btn btn-warning btn-s" ng-click="uploader.cancelAll()"
-		ng-disabled="!uploader.isUploading">
+
+		<button type="button" class="btn btn-warning btn-s" ng-click="cancel()">
 			<span class="fa fa-ban"></span> Cancel
 		</button>
+
 		<button type="button" class="btn btn-primary btn-s" ng-click="ok()">
-			<i class="fa fa-check"></i> Ok
+			<i class="fa fa-check"></i> Done
 		</button>
 	</div>
 </div>

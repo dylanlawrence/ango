@@ -10,47 +10,34 @@
 
 	<div class="row" ng-init="findOne()">
 		
-		<section class="col-sm-4 col-md-6" ng-controller="ModalCtrl">
-
-		    <div class="well">
-
-		    	<button class="btn btn-default" ng-click="openMediaModal()">Select Media</button>
-				
-
-		    	<div class="media">
-
-				</div>
-
-
+		<section class="col-sm-4 col-md-4" ng-controller="ModalCtrl">
+			<div class="well">
+				<a href="" class="btn btn-info" ng-click="openMediaModal()">Select Media</a>
+				<h3 ng-show="mediaDisplay">Media</h3>
 				<ul class="list-unstyled">
-
-					<li class="media" ng-repeat="item in files">
-
+					<li class="media" ng-repeat="item in mediaDisplay">
 						<div class="pull-right">
-							<button type="button" class="btn btn-link btn-xs" ng-click="item.selected='false'">
+							<button type="button" class="btn btn-link btn-xs" ng-click="unSelectMedia(item._id);">
 								<i class="fa fa-trash-o"></i>
 							</button>
 						</div>
-
-						<a class="pull-left" href="#">
+						<b class="pull-left">
 						  <img class="media-object" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="64px" height="64px">
-						</a>
-
+						</b>
 						<div class="media-body">
-						  <h4 class="media-heading ellipsis">{{ item.name }}</h4>
+						  <b class="media-heading ellipsis">{{ item.name }}</b>
 						</div>
-						
 					</li>
 				</ul>
-
-
 		    </div>
-			
 		</section>
 
 		<section class="col-sm-8 col-md-6" >
 
+
 			<form class="form-horizontal" ng-submit="update()">
+			    <input type="hidden" ng-model="article.media"/>
+
 				<div class="form-group">
 					<label for="title">
 						Title

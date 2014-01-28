@@ -5,6 +5,18 @@
 
 <section ng-init="findOne()">
 
+
+    <ul class="list-inline">
+        <li class="media" ng-repeat="item in mediaDisplay">
+            <b class="pull-left">
+              <img class="media-object" src="files/large/{{item.name}}.jpg" alt="{{ item.name }}">
+            </b>
+            <div class="media-body">
+              <b class="media-heading ellipsis">{{ item.name }}</b>
+            </div>
+        </li>
+    </ul>
+
     <h1>{{article.title}}</h1>
 
     <p>
@@ -12,7 +24,6 @@
     <span>{{article.user.name}}</span>
     </p>
     
-
     <p ng-show="currentUser">
         <a class="btn btn-info" href="articles/{{article._id}}/edit">
         	<i class="fa fa-edit"></i> Edit

@@ -1,17 +1,28 @@
 'use strict';
 
 angular.module('angoApp')
-.controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 
-    function ($scope, $routeParams, $location, Global, Articles) {
+.controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 'Files', '$timeout', '$q',
+    function ($scope, $routeParams, $location, Global, Articles, Files, $timeout,$q) {
 
     $scope.global = Global;
 
-    $scope.media = [];
-    $scope.title = '';
-    $scope.content = '';
+    $scope.newArticle = function() {
+        $scope.media = '';
+        $scope.mediaDisplay = '';
+        $scope.title = '';
+        $scope.content = '';
+        Files.setSelected([]);
+    }
+
+    $scope.$on('mediaUpdate', function(){
+        $scope.media = Files.selected;        
+        $scope.mediaDisplay = Files.selectedMedia;
+       
+        $scope.article.media=$scope.media;
+    });
 
     $scope.create = function() {
-        console.debug(this);
+
         var article = new Articles({            
             title: this.title,
             content: this.content,
@@ -27,24 +38,39 @@ angular.module('angoApp')
         this.media = '';
     };
 
-    $scope.remove = function(article) {
-        if (article) {
-            article.$remove();
-            for (var i in $scope.articles) {
-                if ($scope.articles[i] === article) {
-                    $scope.articles.splice(i, 1);
-                }
-            }
-        }else {
-            $scope.article.$remove();
-            $location.path('article');
-        }
+    $scope.findOne = function() {
+
+        $scope.article = {'media':[]};
+        
+        Articles.get({
+
+            articleId: $routeParams.articleId
+        
+        }, function(article) {
+            console.debug(article);
+            article.mediaDisplay = article.media;   
+            Files.getAll();
+            var selected = [];
+            angular.forEach(article.media, function(item, k){
+                selected.push(item._id);    
+            });
+
+            $q.all(article.media).then(function () {   
+                Files.setSelected(selected);
+                article.media = selected;
+                $scope.article = article;
+            });             
+
+        });
     };
+
+
 
     $scope.update = function() {
         
+        console.debug($scope.article);
+      
         var article = $scope.article;
-        //console.debug($scope.article);
 
         if (!article.updated) {
             article.updated = [];
@@ -59,19 +85,24 @@ angular.module('angoApp')
 
     };
 
+    $scope.remove = function(article) {
+        if (article) {
+            article.$remove();
+            for (var i in $scope.articles) {
+                if ($scope.articles[i] === article) {
+                    $scope.articles.splice(i, 1);
+                }
+            }
+        }else {
+            $scope.article.$remove();
+            $location.path('article');
+        }
+    };
     $scope.find = function() {
         Articles.query(function(articles) {
             $scope.articles = articles;
         });
     };
 
-    $scope.findOne = function() {
-
-        Articles.get({
-            articleId: $routeParams.articleId
-        }, function(article) {
-            $scope.article = article;
-        });
-    };
 
   }]);

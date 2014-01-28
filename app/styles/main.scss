@@ -119,19 +119,30 @@ body {
 
 
 .messenger {
-    position:fixed;
-    bottom:0;
-    right:20px;
+
     .win {
+        position:fixed;
+        
+        bottom:-200px;
+        right:20px;
         background:$color-bg-01;
         float:left;
         width:240px;
         min-height:240px;
         border:1px solid #CCC;
         margin-right:10px;
-         @include box-shadow(#666 2px 2px 6px);
+        @include box-shadow(#666 2px 2px 6px);
+
+        @include transition-property(bottom);
+        @include transition-duration(0.3s);
+        @include transition-timing-function(ease); 
     }
+    .win:hover{
+        bottom:0;
+    }
+
     .chat {
+
     }
     .users {
         a { 
@@ -154,76 +165,84 @@ body {
 }
 
 
-
 .media-modal {
 
-    .upload{
+    .upload {
         .drop-box {
             margin:10px 0;
             padding:40px 10px;
             background:#F0F0F0;
             border:dashed 4px #DDD;
             overflow:hidden;
+            .drop-text {
+                text-align: center;
+                color:#666;
+            }
         }
-        .ng-file-over .drop-box {
+        &.ng-file-over .drop-box {
             background:#EEE;
             border:dashed 4px #666;
         }
         .scrollwrap {
+            background:#FFF;
             padding:10px;
             border:solid 1px #DDD;
             overflow-x:hidden;
             overflow-y:auto;
             max-height:280px;
+            ul{
+                margin:5px 20px;
+                li {
+                    padding-top:8px;
+                    margin-bottom:2px;
+                    border:1px solid #DDD;
+                }
+            } 
         }
-        .row{
-            padding-top:8px;
-            border-bottom:1px solid #DDD;
-        }
+
         .actions {
             margin-right:18px;
         }
-        .drop-text {
-            text-align: center;
-            color:#666;
-        }
+
         .upload-btn{
             margin:5px auto;
         }
     }
     .files{
-        li{
+        .filewrap{
+            min-height:200px;
+            width:100%;
+        }
+        .thumbnail {
             position:relative;
-            margin:2px;
-            padding:2px;
-            border:1px solid #999;
-            &:hover {
-                border:1px solid #3D3;
-                cursor:pointer
-            }        
+            min-height:70px;
+            cursor:pointer;
             &.selected {
                 border:1px solid #3D3;
+                .fa-check { display:block}     
             }
+
             .fa-check{
+                display:none;
                 font-size:2em;
                 position:absolute;
                 right:-8px;
                 top:-8px;
                 color:#0C0;
                 @include box-shadow(#FFF 0 0 20px inset);
-            }
+            }     
+ 
         }
     }
     .modal-footer {
         margin-top:0;
     }
+}
 
-
-    input[type='file'] {
-      
-    }
-    input[type='file']:before{
-        content:"or Select Files "
-    }
-
+input[type='file'],
+input[type='file']::-webkit-file-upload-button {
+    visibility: hidden;
+    opacity:0;
+    height:0;
+    width:0;
 }
