@@ -1,30 +1,28 @@
 <div class="files">
-
-
-	<button type="button" class="pull-right btn btn-info btn-sm" ng-click="removeMedia()" ng-disabled="selected.length == 0">
-		<i class="fa fa-trash-o"></i> Remove Media
-	</button>
-
-	<h3>Select Files</h3>
-	<p>Total: {{mediaFiles.length}}</p>
-	<div class="filewrap row">
-		<div class="col-xs-4 col-sm-2" ng-repeat="(k,v) in mediaFiles | limitTo: offset - mediaFiles.length | limitTo: limit">
-			<a href="" class="thumbnail" data-id="{{v._id}}" ng-click="selectFile(v._id)" ng-class="{'selected':getSelected(v._id)}">
-				<i class="fa fa-check"></i>
-				<img src="files/thumb/{{v.name}}.jpg"/>
-			</a>
-		</div>
-	<div>
-
-	<div class="row">
-		<div class="col-xs-12">
-
-			<pagination total-items="mediaFiles.length" on-select-page="paginate(page);" items-per-page="limit" page="currPage" num-pages="numPages"></pagination>
-		</div>
-	</div>
-
-	<!--
-	<pre>Page: {{currPage}} / {{numPages}} {{mediaFiles.length}} {{offset}}</pre>
-	-->
-
+  <button type="button" class="pull-right btn btn-info btn-sm" ng-click="removeMedia()"
+  ng-disabled="selected.length == 0">
+    <i class="fa fa-trash-o"></i> Remove Media
+  </button>
+  <h3>Select Files</h3>
+  <p>
+    Total: {{mediaFiles.length}}
+  </p>
+  <div class="filewrap row" ng-cloak>
+    <div class="col-xs-4 col-sm-2" ng-repeat="(k,v) in mediaFiles | limitTo: offset - mediaFiles.length | limitTo: limit">
+      <a href="" class="thumbnail" data-id="{{v._id}}" ng-click="selectFile(v._id)" ng-class="{'selected':getSelected(v._id)}">
+      <i class="fa fa-check"></i>
+      <img ng-src="files/thumb/{{v.name}}.jpg"/>
+      </a>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div class="col-xs-12">
+        <pagination total-items="mediaFiles.length" on-select-page="paginate(page);" items-per-page="limit"
+        page="currPage" num-pages="numPages">
+        </pagination>
+      </div>
+    </div>
+    <!-- <pre>Page: {{currPage}} / {{numPages}} {{mediaFiles.length}} {{offset}}</pre>-->
+  </div>
 </div>

@@ -1,10 +1,9 @@
 'use strict';
-
-angular.module('angoApp')
-.controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 'Files', '$timeout', '$q',
-    function ($scope, $routeParams, $location, Global, Articles, Files, $timeout,$q) {
-
+angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 'Files', '$timeout', '$q', function($scope, $routeParams, $location, Global, Articles, Files, $timeout, $q) {
+    
     $scope.global = Global;
+    $scope.article = {'media':[]};
+    
 
     $scope.newArticle = function() {
         $scope.media = '';
@@ -13,78 +12,59 @@ angular.module('angoApp')
         $scope.content = '';
         Files.setSelected([]);
     }
-
-    $scope.$on('mediaUpdate', function(){
-        $scope.media = Files.selected;        
+    
+    $scope.$on('mediaUpdate', function() {
+        $scope.media = Files.selected;
         $scope.mediaDisplay = Files.selectedMedia;
-       
-        $scope.article.media=$scope.media;
+        $scope.article.media = Files.selected;
     });
 
     $scope.create = function() {
-
-        var article = new Articles({            
+        var article = new Articles({
             title: this.title,
             content: this.content,
-            media : this.media
+            media: this.media
         });
-
         article.$save(function(response) {
             $location.path('articles/' + response._id);
         });
-
         this.title = '';
         this.content = '';
         this.media = '';
     };
-
     $scope.findOne = function() {
-
-        $scope.article = {'media':[]};
-        
+        $scope.article = {
+            'media': []
+        };
         Articles.get({
-
             articleId: $routeParams.articleId
-        
         }, function(article) {
-            console.debug(article);
-            article.mediaDisplay = article.media;   
+            //console.debug(article);
+            article.mediaDisplay = article.media;
             Files.getAll();
             var selected = [];
-            angular.forEach(article.media, function(item, k){
-                selected.push(item._id);    
+            angular.forEach(article.media, function(item, k) {
+                selected.push(item._id);
             });
-
-            $q.all(article.media).then(function () {   
+            $q.all(article.media).then(function() {
                 Files.setSelected(selected);
                 article.media = selected;
                 $scope.article = article;
-            });             
-
+            });
         });
     };
-
-
-
     $scope.update = function() {
-        
         console.debug($scope.article);
-      
         var article = $scope.article;
-
         if (!article.updated) {
             article.updated = [];
         }
-
         article.user = article.user._id;
         article.updated.push(new Date().getTime());
-
         article.$update(function() {
             $location.path('articles/' + article._id);
         });
-
     };
-
     $scope.remove = function(article) {
         if (article) {
             article.$remove();
@@ -93,7 +73,7 @@ angular.module('angoApp')
                     $scope.articles.splice(i, 1);
                 }
             }
-        }else {
+        } else {
             $scope.article.$remove();
             $location.path('article');
         }
@@ -103,6 +83,4 @@ angular.module('angoApp')
             $scope.articles = articles;
         });
     };
-
-
-  }]);
+}]);

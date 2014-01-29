@@ -21,7 +21,7 @@
 				<li ng-show="{{global.authenticated}}">
 					<a ng-href="/user/{{global.user._id}}">
 						<i class="fa fa-{{global.user.provider}}"></i>
-						<img src="{{thumbnail}}"/>
+						<img ng-src="{{thumbnail}}"/>
 						{{global.user.name}}
 					</a>
 				</li>
