@@ -1,59 +1,52 @@
-<div class="container" ng-init="newArticle();">
-	
-	<h1>Create Article</h1>
-
-	<form class="form-horizontal" ng-submit="create()">
-	<div class="row">
-
-		<section class="col-sm-4 col-md-4" ng-controller="ModalCtrl">
-			
-			<div class="well">
-				<a href="" class="btn btn-info" ng-click="openMediaModal()">Select Media</a>
-				<h3 ng-show="mediaDisplay">Media</h3>
-				<ul class="list-unstyled">
-					<li class="media" ng-repeat="item in mediaDisplay">
-						<div class="pull-right">
-							<button type="button" class="btn btn-link btn-xs" ng-click="unSelectMedia(item._id);">
-								<i class="fa fa-trash-o"></i>
-							</button>
-						</div>
-						<b class="pull-left">
-						  <img class="media-object" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="64px" height="64px">
-						</b>
-						<div class="media-body">
-						  <b class="media-heading ellipsis">{{ item.name }}</b>
-						</div>
-					</li>
-				</ul>
-		    </div>
-		</section>
-
-		<section class="col-sm-8 col-md-8">
-
-				<input type="hidden" ng-model="media">
-
-				<div class="form-group">
-					<label for="title">Title</label>
-					<div >
-						<input class="form-control" type="text" ng-model="title" id="title" placeholder="Title" required>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="content">Content</label>
-					<div>
-						<textarea class="form-control" ng-model="content" id="content" cols="30" rows="10" placeholder="Content">
-						</textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<div class="controls">
-						<input type="submit" class="btn">
-					</div>
-				</div>
-			
-		</section>
-
-	</div><!-- row -->
-	</form>
-
+<div class="page-article-create">
+  <section class="page-main">
+    <div class="container page-mid" ng-init="newArticle();">
+      <h1>Create Article</h1>
+      <form class="form-horizontal" ng-submit="create()">
+        <div class="row">
+          <section class="col-sm-4 col-md-4" ng-controller="ModalCtrl">
+            <div class="well">
+              <a href="" class="btn btn-info" ng-click="openMediaModal()">Select Media</a>
+              <div class="" ng-show="mediaDisplay" ng-cloak>
+                <h3>Media</h3>
+                <ul class="list-unstyled">
+                  <li class="media" ng-repeat="item in mediaDisplay">
+                    <div class="pull-right">
+                      <button type="button" class="btn btn-link btn-xs" ng-click="unSelectMedia(item._id);">
+                      	<i class="fa fa-trash-o"></i>
+                      </button>
+                    </div>
+                    <b class="pull-left"><img class="media-object" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="64px" height="64px"></b>
+                    <div class="media-body">
+                      <b class="media-heading ellipsis">{{ item.name }}</b>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section class="col-sm-8 col-md-8">
+            <input type="hidden" ng-model="media" />
+            <label for="title">Title</label>
+            <p>
+              <input class="form-control" type="text" ng-model="title" id="title" placeholder="Title"
+              required>
+            </p>
+            <label for="content">Content</label>
+            <p>
+              <textarea class="form-control" ng-model="content" id="content" cols="30" rows="10"
+              placeholder="Content">
+              </textarea>
+            </p>
+            <div class="navbar navbar-default">
+              <div class="navbar-form">
+                <input type="submit" class="btn btn-primary">
+              </div>
+            </div>
+          </section>
+        </div>
+        <!-- row -->
+      </form>
+    </div>
+  </section>
 </div>

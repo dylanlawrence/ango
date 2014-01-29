@@ -1,42 +1,41 @@
-<section class="page-articles">
-    <div class="container page-mid">
+<div class="page-">
 
 
+<section class="page-main">
+<div class="container page-mid">
 
-<section ng-init="findOne()">
+    <section ng-init="findOne()">
 
+        <h1>{{article.title}}</h1>
 
-    <ul class="list-inline">
-        <li class="media" ng-repeat="item in mediaDisplay">
-            <b class="pull-left">
-              <img class="media-object" src="files/large/{{item.name}}.jpg" alt="{{ item.name }}">
-            </b>
-            <div class="media-body">
-              <b class="media-heading ellipsis">{{ item.name }}</b>
-            </div>
-        </li>
-    </ul>
+        <p>
+            <span>{{article.created | date:'medium'}}</span>
+            <span>{{article.user.name}}</span>
+        </p>
+        
+        <ul class="list-inline">
+            <li class="media" ng-repeat="item in mediaDisplay">
+                <b class="pull-left">
+                  <img class="thumbnail" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}">
+                </b>
+            </li>
+        </ul>
+        
+        <p ng-show="currentUser">
+            <a class="btn btn-info" href="articles/{{article._id}}/edit">
+            	<i class="fa fa-edit"></i> Edit
+            </a>
+            <a class="btn btn-info" ng-click="remove();">
+                <i class="fa fa-trash-o"></i> Chuck it
+            </a>
+        </p>
 
-    <h1>{{article.title}}</h1>
+        <div>{{article.content}}</div>
 
-    <p>
-    <span>{{article.created | date:'medium'}}</span>
-    <span>{{article.user.name}}</span>
-    </p>
-    
-    <p ng-show="currentUser">
-        <a class="btn btn-info" href="articles/{{article._id}}/edit">
-        	<i class="fa fa-edit"></i> Edit
-        </a>
-        <a class="btn btn-info" ng-click="remove();">
-            <i class="fa fa-trash-o"></i> Chuck it
-        </a>
-    </p>
-
-    <div>{{article.content}}</div>
-
-</section>
-<br/>
-
+    </section>
+    <br/>
 </div>
 </section>
+
+
+</div>
