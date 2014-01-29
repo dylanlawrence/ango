@@ -1,78 +1,89 @@
 'use strict';
 
-/*
-angular.module('angoApp').controller('UploadCtrl', ['$scope','$fileUploader', 
-  function($scope, $fileUploader) {
-}]);
-*/
+angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$rootScope', '$modalInstance', 'Files','$timeout',
+  function($scope, $rootScope, $modalInstance, Files, $timeout) {
+
+  $scope.uploader = Files.getUploader();
+  $scope.scope = "MediaModal";
+
+  $scope.currPage = 1;
+  $scope.limit = 12;
+  $scope.offset = 0;
 
 
-angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$modalInstance', 'items', '$fileUploader', '$http', 
-  function($scope, $modalInstance, items, $fileUploader, $http) {
+  $scope.paginate = function(page){
 
-  $scope.mediafiles = {};
+      console.log('paginate', page);
+      $scope.offset = page * 12;
+  };
 
-  $http.get('/api/files').success(function(files) {
-      $scope.mediafiles = files;
+  $scope.tabs = [
+    { icon:'fa-folder', title:'Media Files', template:"partials/media-modal-files.html" },
+    { icon:'fa-upload', title:"Upload Media", template:"partials/media-modal-upload.html"},
+    { icon:'fa-code', title:"Embeded Sources", template:"partials/media-modal-embeded.html"},
+  ];
+
+  Files.getAll();
+  $scope.mediaFiles = Files.mediaFiles || [];
+  
+  $rootScope.$on('mediaUpdate', function() {
+      $scope.mediaFiles = Files.mediaFiles;
+      $scope.selected = Files.selected;
+      $scope.selectedMedia = Files.selectedMedia;
   });
 
-  $scope.selectFile = function(f){
-    //$scope.selected =
+  $scope.uploader.bind('completeall', function(event, items) {
+      //console.info('Complete all', items);
+      $scope.status = "Complete";
+      if (this.progress > 99) {
+          $timeout(function(){
+            $scope.tabs[0].active = true;
+            Files._getAll();
+            $scope.uploader.queue = [];
+          },700);
+      }
+  });
+
+
+  $scope.uploader.bind('complete', function(event, xhr, item, response) {
+     $scope.selectFile(response._id);
+  });
+
+  $scope.getSelected = function(id){
+    return Files.selected.indexOf(id) != -1;
   }
 
-  $scope.ok = function() {
-    $modalInstance.close($scope.selected.item);
+  $scope.selectFile = function(id){
+    if ($scope.getSelected(id)) {
+      Files.unSelectMedia(id);
+    }else{
+      console.log(id);
+      Files.selectMedia(id);
+    }
+  }
+
+  $scope.removeMedia = function(){
+
+    Files.removeSelected();
+
+  }
+
+
+  $scope.callFileInput = function(){
+      $timeout(function(){
+        $("input[type='file']").trigger('click');
+      },100);
   };
+
+  // Send back to modalctrl
+  $scope.ok = function() {
+    var selected = {};
+    $scope.uploader.queue = [];
+    $modalInstance.close();
+  };
+
   $scope.cancel = function() {
     $modalInstance.dismiss('cancel');
   };
-
-  // Creates an uploader
-  var uploader = $scope.uploader = $fileUploader.create({
-    scope: $scope,
-    url: '/api/upload'
-  });
-
-  // ADDING FILTERS
-  // Images only
-  uploader.filters.push(function(item /*{File|HTMLInputElement}*/ ) {
-    var type = uploader.isHTML5 ? item.type : '/' + item.value.slice(item.value.lastIndexOf('.') + 1);
-    type = '|' + type.toLowerCase().slice(type.lastIndexOf('/') + 1) + '|';
-    return '|jpg|png|jpeg|bmp|gif|'.indexOf(type) !== -1;
-  });
-  // REGISTER HANDLERS
-  uploader.bind('afteraddingfile', function(event, item) {
-    console.info('After adding a file', item);
-  });
-  uploader.bind('afteraddingall', function(event, items) {
-    console.info('After adding all files', items);
-  });
-  uploader.bind('beforeupload', function(event, item) {
-    console.info('Before upload', item);
-  });
-  uploader.bind('progress', function(event, item, progress) {
-    console.info('Progress: ' + progress, item);
-  });
-  uploader.bind('success', function(event, xhr, item, response) {
-    console.info('Success', xhr, item, response);
-  });
-  uploader.bind('cancel', function(event, xhr, item) {
-    console.info('Cancel', xhr, item);
-  });
-  uploader.bind('error', function(event, xhr, item, response) {
-    console.info('Error', xhr, item, response);
-  });
-  uploader.bind('complete', function(event, xhr, item, response) {
-    console.info('Complete', xhr, item, response);
-  });
-  uploader.bind('progressall', function(event, progress) {
-    console.info('Total progress: ' + progress);
-  });
-  uploader.bind('completeall', function(event, items) {
-    //console.info('Complete all', items);
-    if (this.progress > 99) {
-      $modalInstance.close(items);
-    }
-  });
 
 }]);

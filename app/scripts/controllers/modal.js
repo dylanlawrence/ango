@@ -1,27 +1,37 @@
 'use strict';
 
-angular.module('angoApp').controller('ModalCtrl', ['$scope', '$http', '$modal', '$log', function($scope, $http, $modal, $log) {
+angular.module('angoApp').controller('ModalCtrl', ['$scope', 'Files', '$http', '$modal', '$log','$rootScope',  
+  function($scope, Files, $http, $modal, $log, $rootScope) {
   
-  $scope.items = ['item1', 'item2', 'item3'];
-  
+  //$scope.tabs = []; // previously selected
+
+  $scope.unSelectMedia = function(id){
+      Files.unSelectMedia(id);
+  }
+
   $scope.openMediaModal = function() {
+    
     var modalInstance = $modal.open({
       templateUrl: 'partials/media-modal',
       controller: 'MediaModalCtrl',
+      scope:$rootScope,
       resolve: {
-        items: function() {
-          return $scope.items;
+        tabs: function () {
+          return $scope.tabs;
         }
       }
     });
 
-    modalInstance.result.then(function (files) {
-        //console.debug(files);
-        $scope.files = files;
+    modalInstance.result.then(function () {
+
     }, function () {
-        $log.info('Modal dismissed at: ' + new Date());
+        //$log.info('Modal dismissed at: ' + new Date());
     });
+
   };
 
 }]);
+
+
+
 

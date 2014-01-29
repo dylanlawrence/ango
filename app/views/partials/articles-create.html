@@ -1,58 +1,48 @@
-<div class="container" ng-init="new()">
+<div class="container" ng-init="newArticle();">
 	
 	<h1>Create Article</h1>
+
+	<form class="form-horizontal" ng-submit="create()">
 	<div class="row">
 
-		<section class="col-sm-4 col-md-6" ng-controller="ModalCtrl">
-
-		    <div class="well">
-
-		    	<button class="btn btn-default" ng-click="openMediaModal()">Select Media</button>
-				
+		<section class="col-sm-4 col-md-4" ng-controller="ModalCtrl">
+			
+			<div class="well">
+				<a href="" class="btn btn-info" ng-click="openMediaModal()">Select Media</a>
+				<h3 ng-show="mediaDisplay">Media</h3>
 				<ul class="list-unstyled">
-					<li class="row" ng-repeat="item in files">
-						
+					<li class="media" ng-repeat="item in mediaDisplay">
 						<div class="pull-right">
-							<div class="actions">
-								<button type="button" class="btn btn-link btn-xs" ng-click="item.remove()">
-									<i class="fa fa-trash-o"></i>
-								</button>
-							</div>
+							<button type="button" class="btn btn-link btn-xs" ng-click="unSelectMedia(item._id);">
+								<i class="fa fa-trash-o"></i>
+							</button>
 						</div>
-
-						<div class="col-xs-3 col-sm-2">
-							<div>
-								<img src="files/thumb/{{item.file.name}}.jpg">
-							</div>
+						<b class="pull-left">
+						  <img class="media-object" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="64px" height="64px">
+						</b>
+						<div class="media-body">
+						  <b class="media-heading ellipsis">{{ item.name }}</b>
 						</div>
-
-						<div class="col-xs-9 col-sm-7">
-							<strong class="ellipsis" style="max-width:90%">
-								{{ item.file.name }}
-							</strong>						
-						</div>
-
 					</li>
 				</ul>
-
 		    </div>
-			
 		</section>
 
-		<section class="col-sm-8 col-md-6" >
-			
-			<form class="form-horizontal" ng-submit="create()">
+		<section class="col-sm-8 col-md-8">
+
+				<input type="hidden" ng-model="media">
 
 				<div class="form-group">
 					<label for="title">Title</label>
 					<div >
-						<input class="form-control" type="text" data-ng-model="title" id="title" placeholder="Title" required>
+						<input class="form-control" type="text" ng-model="title" id="title" placeholder="Title" required>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="content">Content</label>
 					<div>
-						<textarea class="form-control" data-ng-model="content" id="content" cols="30" rows="10" placeholder="Content"></textarea>
+						<textarea class="form-control" ng-model="content" id="content" cols="30" rows="10" placeholder="Content">
+						</textarea>
 					</div>
 				</div>
 				<div class="form-group">
@@ -60,9 +50,10 @@
 						<input type="submit" class="btn">
 					</div>
 				</div>
-			</form>
+			
 		</section>
 
-	</div>
+	</div><!-- row -->
+	</form>
 
 </div>

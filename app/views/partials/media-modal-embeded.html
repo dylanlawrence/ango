@@ -1,0 +1,13 @@
+<div class="Embeded">
+
+	<h3>Add Emebeded Sources</h3>
+	
+	<ul class="list-unstyled">
+		<li data-id="{{v._id}}" ng-repeat="(k,v) in mediaEmbeded" ng-click="selectFile(v._id)"
+		ng-class="{'selected':getSelected(v._id)}">
+			<i class="fa fa-check"></i>
+			<img src="files/thumb/{{v.name}}.jpg" />
+		</li>
+	</ul>
+
+</div>
