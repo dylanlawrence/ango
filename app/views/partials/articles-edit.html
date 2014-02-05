@@ -1,78 +1,77 @@
 <div class="jumbotron">
-
 </div>
-
 <div class="container">
-	<h1>Edit Article</h1>
+  <h1>Edit Article</h1>
+  <div class="row" ng-init="findOne()">
+    <section class="col-sm-4" ng-controller="ModalCtrl">
+      <div class="well">
+        <a href="" class="btn btn-info" ng-click="openMediaModal()">Select Media</a>
+        <h3 ng-show="mediaDisplay">Media</h3>
+        <ul class="list-group list-sm">
+          <li class="list-group-item clearfix" ng-repeat="item in mediaDisplay">
+            <div class="pull-right">
+              <button type="button" class="btn btn-link" ng-click="unSelectMedia(item._id);">
+                <i class="fa fa-trash-o">
+                </i>
+              </button>
+            </div>
+            <b class="pull-left">
+            <img ng-src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="40px" height="40px">
+            </b>
+            <div class="media-body">
+              <b class="media-heading ellipsis">{{ item.name }}</b>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="col-sm-8">
 
 
+      <form class="form-horizontal" ng-submit="update()">
+        <input type="hidden" ng-model="article.media" />
+        <p>
+          <label for="title">Title</label>
+          <div>
+            <input class="form-control" type="text" ng-model="article.title" id="title" placeholder="Title"
+            required>
+            </input>
+          </div>
+        </p>
+        <p>
+        
+          <label for="content">Content</label>
+          <div>
+            <!-- textarea class="form-control" ng-model="article.content" id="content" cols="30"
+            rows="10" placeholder="Content">
+            </textarea -->
+            <div text-angular ng-model="article.content">
+            </div>
 
+            <div ui-ace="{
+            useWrapMode : true,
+            showGutter: true,
+            theme:'cobalt',
+            mode: 'html'
+          }" ng-model="article.content" >
+          </div>
+          </div>
 
-	<div class="row" ng-init="findOne()">
-		
-		<section class="col-sm-4 col-md-4" ng-controller="ModalCtrl">
-			<div class="well">
-				<a href="" class="btn btn-info" ng-click="openMediaModal()">Select Media</a>
-				<h3 ng-show="mediaDisplay">Media</h3>
-				<ul class="list-unstyled">
-					<li class="media" ng-repeat="item in mediaDisplay">
-						<div class="pull-right">
-							<button type="button" class="btn btn-link btn-xs" ng-click="unSelectMedia(item._id);">
-								<i class="fa fa-trash-o"></i>
-							</button>
-						</div>
-						<b class="pull-left">
-						  <img class="media-object" ng-src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="64px" height="64px">
-						</b>
-						<div class="media-body">
-						  <b class="media-heading ellipsis">{{ item.name }}</b>
-						</div>
-					</li>
-				</ul>
-		    </div>
-		</section>
-
-		<section class="col-sm-8 col-md-6" >
-
-
-			<form class="form-horizontal" ng-submit="update()">
-			    <input type="hidden" ng-model="article.media"/>
-
-				<div class="form-group">
-					<label for="title">
-						Title
-					</label>
-					<div>
-						<input class="form-control" type="text" ng-model="article.title" id="title" placeholder="Title"
-						required>
-						</input>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="content">
-						Content
-					</label>
-					<div>
-						<textarea class="form-control" ng-model="article.content" id="content" cols="30"
-						rows="10" placeholder="Content">
-						</textarea>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="title">
-						User
-					</label>
-					<div>
-						<input class="form-control" type="text" ng-model="article.user.name" id="title"
-						placeholder="Title" required>
-						</input>
-					</div>
-				</div>
-				<div>
-					<input type="submit" class="btn btn-primary" />
-				</div>
-			</form>
-
-		</section>
-	</div>	
+        </p>
+        <p>
+          <label for="title">User</label>
+          <div>
+            <input class="form-control" type="text" ng-model="article.user.name" id="title"
+            placeholder="Title" required>
+            </input>
+          </div>
+        </p>
+        <div class="navbar navbar-default">
+          <div class="navbar-form navbar-left">
+            <input type="submit" class="btn btn-primary" value="Save" />
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
 </div>

@@ -1,27 +1,23 @@
 <div class="container">
-  
   <div class="col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
-    
     <h1>Sign Up</h1>
-
     <div class="panel panel-default">
-      <div class="panel-heading">Sign Up</div>
-
+      <div class="panel-heading">
+        Sign Up
+      </div>
       <div class="panel-body">
         <div class="row">
-
           <div class="col-md-5">
             <div ng-include="'partials/social-login'"></div>
           </div>
-
           <div class="col-md-1">
-            <p></p>
+            <p>
+            </p>
           </div>
-
           <div class="col-md-6">
             <form class="form" name="form" ng-submit="register(form)" novalidate>
-              <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
-                                                'has-error': form.name.$invalid && submitted }">
+              <div class="form-group" ng-class="{'has-success': form.name.$valid && submitted,
+                                                 'has-error': form.name.$invalid && submitted }">
                 <label>Name</label>
                 <input type="text" name="name" class="form-control" ng-model="user.name" required/>
                 <p class="help-block" ng-show="form.name.$error.required && submitted">
@@ -51,7 +47,8 @@
                 <p class="help-block" ng-show="(form.password.$error.minlength || form.password.$error.required) && submitted">
                   Password must be at least 3 characters.
                 </p>
-                <p class="help-block" ng-show="form.password.$error.mongoose">{{ errors.password }}
+                <p class="help-block" ng-show="form.password.$error.mongoose">
+                  {{ errors.password }}
                 </p>
               </div>
               <hr>
@@ -65,8 +62,11 @@
               <a href="/login" class="text-center new-account">Log in.</a>
             </div>
           </div>
-        </div> <!-- row -->
-      </div> <!-- panel-body -->
-    </div> <!-- panel -->
+        </div>
+        <!-- row -->
+      </div>
+      <!-- panel-body -->
+    </div>
+    <!-- panel -->
   </div>
 </div>

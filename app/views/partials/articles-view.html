@@ -1,41 +1,35 @@
-<div class="page-">
+<div class="page-article-view">
+  <section class="page-main">
+    <div class="container page-mid">
+      <div class="row">
 
-
-<section class="page-main">
-<div class="container page-mid">
-
-    <section ng-init="findOne()">
-
-        <h1>{{article.title}}</h1>
-
-        <p>
+        <section class="col-sm-8" ng-init="findOne()">
+          <h1>{{article.title}}</h1>
+          <p>
             <span>{{article.created | date:'medium'}}</span>
             <span>{{article.user.name}}</span>
-        </p>
-        
-        <ul class="list-inline">
+          </p>
+          <ul class="list-inline">
             <li class="media" ng-repeat="item in mediaDisplay">
-                <b class="pull-left">
+              <b class="pull-left">
                   <img class="thumbnail" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}">
                 </b>
             </li>
-        </ul>
-        
-        <p ng-show="currentUser">
+          </ul>
+          <p ng-show="currentUser">
             <a class="btn btn-info" href="articles/{{article._id}}/edit">
-            	<i class="fa fa-edit"></i> Edit
+                <i class="fa fa-edit"></i> Edit
             </a>
             <a class="btn btn-info" ng-click="remove();">
                 <i class="fa fa-trash-o"></i> Chuck it
             </a>
-        </p>
-
-        <div>{{article.content}}</div>
-
-    </section>
-    <br/>
-</div>
-</section>
-
-
+          </p>
+          <div ng-bind-html="article.content">
+          </div>
+        </section>
+        <section class="col-sm-4">
+        </section>
+      </div>
+    </div>
+  </section>
 </div>

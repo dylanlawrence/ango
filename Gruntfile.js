@@ -43,7 +43,7 @@ module.exports = function (grunt) {
     },
     open: {
       server: {
-        url: 'http://10.0.0.3:<%= express.options.port %>'
+        url: 'http://10.0.0.2:<%= express.options.port %>'
       }
     },
     watch: {
@@ -159,7 +159,9 @@ module.exports = function (grunt) {
       app: {
         html: '<%= yeoman.app %>/views/index.html',
         ignorePath: '<%= yeoman.app %>/',
-        exclude: ['sass-bootstrap', 'bower_components/sass-bootstrap/dist/js/bootstrap.js']
+        exclude: ['sass-bootstrap', 
+        'bower_components/sass-bootstrap/dist/js/bootstrap.js', 
+        'bower_components/jquery-easing/jquery.easing.min.js']
       }
     },
 

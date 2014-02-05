@@ -4,6 +4,16 @@ angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', 
     $scope.global = Global;
     $scope.article = {'media':[]};
     
+  $scope.open = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+
+    $scope.opened = true;
+  };
+$scope.dateOptions = {
+    'year-format': "'yy'",
+    'starting-day': 1
+  };
 
     $scope.newArticle = function() {
         $scope.media = '';

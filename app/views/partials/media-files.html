@@ -1,0 +1,61 @@
+<div class="files">
+  <h3>Select Files</h3>
+
+  <nav class="navbar navbar-default">
+      <div class="navbar-header">
+        Total: {{mediaFiles.length}}
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+    <ul class="nav navbar-nav">
+      <li class="nav">
+      </li>
+
+      <form class="navbar-form navbar-left" role="search">
+        <button type="button" class="btn btn-default" ng-click="removeMedia()" ng-disabled="selected.length <= 0">
+          <i class="fa fa-trash-o"></i> Remove
+        </button>
+        <button type="button" class="btn btn-default" ng-click="editMedia()" ng-disabled="selected.length <= 0">
+          <i class="fa fa-edit"></i> Edit
+        </button>
+        <button type="button" class="btn btn-default" ng-click="rebuildMedia()" ng-disabled="selected.length <= 0">
+          <i class="fa fa-refresh"></i> Rebuild
+        </button>
+      </form>
+
+      <form class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">
+          Submit
+        </button>
+      </form>
+    </ul>
+    </div>
+  </nav>
+
+  <div class="row">
+  <em>Click to Select</em>
+
+  </div>
+  <ul ui-sortable ng-model="mediaFiles" class="list-float">
+    <li ng-repeat="(k,v) in mediaFiles | limitTo: offset - mediaFiles.length | limitTo: limit">
+      <span class="thumbnail" data-id="{{v._id}}" ng-click="selectFile(v._id)" ng-class="{'selected':getSelected(v._id)}">
+        <i class="fa fa-check"></i>
+        <img ng-src="files/thumb/{{v.name}}.jpg" width="100%"/>
+      </span>
+    </li>
+  </ul>
+
+  <div>
+    <div class="row">
+      <div class="col-xs-12">
+        <pagination total-items="mediaFiles.length" on-select-page="paginate(page);" items-per-page="limit"
+        page="currPage" num-pages="numPages">
+        </pagination>
+      </div>
+    </div>
+    <!-- <pre>Page: {{currPage}} / {{numPages}} {{mediaFiles.length}} {{offset}}</pre>-->
+  </div>
+</div>

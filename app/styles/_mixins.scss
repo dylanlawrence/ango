@@ -1,11 +1,10 @@
 
 
-@mixin cubo($array, $img, $size:100) {
+@mixin cubo($array, $size:100) {
     a {
-        background:#000 image-url($img) no-repeat;
         display: inline-block;
         width: $size;
-        height: $size;        
+        height: $size;
         text-align:left;
         text-indent: -99999px;
     }

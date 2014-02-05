@@ -9,10 +9,7 @@ angular.module('angoApp')
     $scope.menu = [{
       'title': 'About',
       'link': '/about'
-    }, {
-      'title': 'Work',
-      'link': '/work'
-    }, {
+    },  {
       'title': 'Blog',
       'link': '/articles'
     }, {

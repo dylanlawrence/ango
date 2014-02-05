@@ -1,13 +1,18 @@
 'use strict';
-angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$rootScope', '$modalInstance', 'Files', '$timeout', function($scope, $rootScope, $modalInstance, Files, $timeout) {
+angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$rootScope', '$modalInstance', 'Files', '$timeout', 
+  function($scope, $rootScope, $modalInstance, Files, $timeout) {
+  
   $scope.uploader = Files.getUploader();
   $scope.scope = "MediaModal";
+  
   $scope.currPage = 1;
   $scope.limit = 12;
   $scope.offset = 0;
+
   $scope.paginate = function(page) {
     $scope.offset = (page-1) * 12;
   };
+  
   $scope.tabs = [{
     icon: 'fa-folder',
     title: 'Media Files',
@@ -21,13 +26,16 @@ angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$rootScope', 
     title: "Embeded Sources",
     template: "partials/media-modal-embeded.html"
   }, ];
+
   Files.getAll();
   $scope.mediaFiles = Files.mediaFiles || [];
+
   $rootScope.$on('mediaUpdate', function() {
     $scope.mediaFiles = Files.mediaFiles;
     $scope.selected = Files.selected;
     $scope.selectedMedia = Files.selectedMedia;
   });
+  
   $scope.uploader.bind('completeall', function(event, items) {
     //console.info('Complete all', items);
     $scope.status = "Complete";

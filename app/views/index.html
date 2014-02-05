@@ -8,12 +8,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
     <title>Ango</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Javascript Fullstack Developement Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+    <meta name="fragment" content="!" />
 
     <meta property="fb:app_id" content="216788918360053">
     <meta property="og:title" content="#{appName} - #{title}">
-    <meta property="og:description" content="A Modern Stack: AngularJS, MongoDB, ExpressJS, NodeJS.">
+    <meta property="og:description" content="Ango">
     <meta property="og:type" content="website">
     <meta property="og:url" content="APP_URL">
     <meta property="og:image" content="APP_LOGO">
@@ -23,6 +25,7 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/angular-rn-carousel/dist/angular-carousel.css" />
     <!-- endbower -->
     <!-- endbuild -->
     
@@ -34,23 +37,26 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/responsive.css">
     <!-- endbuild -->
+
   </head>
   <body ng-app="angoApp" ng-controller="GlobalCtrl" ng-class="getBodyClass();">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-
     <!-- Add your site or application content here -->
     <div id="navMain" class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl" ng-include="'partials/navbar'"></div>
-    
-    <div class="container" ng-include="'partials/alerts'"></div>
 
+    <p><%= user %></p>
+    
     <div id="all" ng-cloak>
+        <span fx-scroll="scroll"></span>
+        <div class="container" ng-include="'partials/alerts'"></div>
         <div ng-view=""></div>
         <div ng-include="'partials/postscript'"></div>
         <div ng-include="'partials/footer'"></div>
     </div>
+
 
     <div ng-include="'partials/chat'"></div>
 
@@ -70,16 +76,28 @@
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
+<!--script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script -->
+<script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
+
 <!-- build:js(app) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/jquery.js"></script>
+<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
+<script src="bower_components/textAngular/textAngular.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-rn-carousel/dist/angular-carousel.js"></script>
+<script src="bower_components/jquery-easing/jquery.easing.js"></script>
+<script src="bower_components/angular-ui-ace/ui-ace.js"></script>
+<script src="bower_components/angular-ui-sortable/src/sortable.js"></script>
 <!-- endbower -->
+
+<script src="bower_components/angular-truncate/dist/angular-truncate.js"></script>
 <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.10.0.js"></script>    
 <!-- endbuild -->
 
@@ -107,6 +125,9 @@
 <script src="scripts/directives/ngThumb.js"></script>
 <script src="scripts/controllers/media-modal.js"></script>
 <script src="scripts/services/files.js"></script>
+<script src="scripts/directives/fxScroll.js"></script>
+<script src="scripts/filters/filters.js"></script>
+<script src="scripts/controllers/media.js"></script>
 <!-- endbuild -->
 
 

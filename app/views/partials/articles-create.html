@@ -9,21 +9,28 @@
               <a href="" class="btn btn-info" ng-click="openMediaModal()">Select Media</a>
               <div class="" ng-show="mediaDisplay" ng-cloak>
                 <h3>Media</h3>
-                <ul class="list-unstyled">
-                  <li class="media" ng-repeat="item in mediaDisplay">
+                <ul class="list-group list-sm">
+                  <li class="list-group-item clearfix" ng-repeat="item in mediaDisplay">
                     <div class="pull-right">
-                      <button type="button" class="btn btn-link btn-xs" ng-click="unSelectMedia(item._id);">
-                      	<i class="fa fa-trash-o"></i>
+                      <button type="button" class="btn btn-link" ng-click="unSelectMedia(item._id);">
+                        <i class="fa fa-trash-o"></i>
                       </button>
                     </div>
-                    <b class="pull-left"><img class="media-object" src="files/thumb/{{item.name}}.jpg" alt="{{ item.name }}" width="64px" height="64px"></b>
-                    <div class="media-body">
-                      <b class="media-heading ellipsis">{{ item.name }}</b>
-                    </div>
+                    <img src="files/thumb/{{item.name}}.jpg" class="pull-left" alt="{{ item.name }}"
+                    width="40px" height="40px">
+                    <span class="ellipsis">{{ item.name }}</span>
                   </li>
                 </ul>
               </div>
             </div>
+            <p class="input-group">
+              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="dt"
+              is-open="opened" datepicker-options="dateOptions" date-disabled="disabled(date, mode)"
+              ng-required="true" close-text="Close" />
+              <span class="input-group-btn">
+                <button class="btn btn-default" ng-click="open($event)"><i class="fa fa-calendar"></i></button>
+              </span>
+            </p>
           </section>
           <section class="col-sm-8 col-md-8">
             <input type="hidden" ng-model="media" />

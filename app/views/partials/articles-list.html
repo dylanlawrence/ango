@@ -3,8 +3,8 @@
     <div class="container page-mid">
       <h1>Blog</h1>
       <p>
-	<a href="/articles/create" class="btn btn-primary" ng-href="/articles/create">New Article</a>
-	</p>
+        <a href="/articles/create" class="btn btn-primary" ng-href="/articles/create">New Article</a>
+      </p>
       <hr/>
       <div class="row">
         <section class="col-sm-8" ng-init="find()">
@@ -12,15 +12,16 @@
             <li ng-repeat="article in articles">
               <h2><a ng-href="articles/{{article._id}}">{{article.title}}</a></h2>
               <p>
-				<span>{{article.created | date:'medium'}}</span> /
-				<span>{{article.user.name}}</span>
-				<div>{{article.content}}</div>
-			</p>
+                <span>{{article.created | date:'medium'}}</span> /
+                <span>{{article.user.name}}</span>
+                <!-- div ng-bind-html="article.content"></div -->
+                <blockquote>{{article.content | htmlText | characters:150 }}</blockquote>
+              </p>
               <ul class="list-inline">
                 <li ng-repeat="m in article.media">
-					<a href="" class="thumbnail">
-						<img src="files/thumb/{{m.name}}.jpg" alt="{{m.name}}" width="64px" height="64px">
-					</a>
+                  <a href="" class="thumbnail">
+                  <img src="files/thumb/{{m.name}}.jpg" alt="{{m.name}}" width="64px" height="64px">
+                </a>
                 </li>
               </ul>
               <hr/>
@@ -29,8 +30,8 @@
           <h1 ng-hide="!articles || articles.length">No articles yet. <br> Why don't you <a href="articles/create">Create One</a>?</h1>
         </section>
         <section class="col-sm-4">
-        <div class="well">
-        </div>
+          <div class="well">
+          </div>
         </section>
       </div>
     </div>

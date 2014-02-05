@@ -1,11 +1,17 @@
 'use strict';
 
-angular.module('angoApp').controller('GlobalCtrl', function($scope, $http) {
+angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
 
+	$scope.scroll = 0;
 
 	$scope.bodyClassObj = {default:'body', context:'page_', topnav:'topnav-hidden'};
 
-
+	//$scope.scroll.$watch(function(){
+		
+	//});
+	$rootScope.scrollTo = function(to){
+		$("html, body").delay(300).animate({scrollTop:to},{easing: "easeOutExpo"}, 2000);
+	}
 
 	$scope.matchM = function(){
 
@@ -51,4 +57,4 @@ angular.module('angoApp').controller('GlobalCtrl', function($scope, $http) {
 
 
 
-});
+}]);

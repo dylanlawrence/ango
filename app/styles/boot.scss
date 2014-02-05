@@ -10,4 +10,28 @@
 	text-shadow:none;
 }
 
+.btn-toolbar{
+	background:#EFEFEF;
+	border-radius:5px 5px 0 0; 
+	border:1px solid #CCC;
+	padding:8px 0 2px 10px;
+	.btn {margin: 0}
+	.btn-group,
+	.btn-group + .btn-group {
+		margin:0 5px 5px 0; 
+	}
+}
+
+.list-sm{
+	.list-group-item{
+		padding:3px;
+		img{ margin-right: 5px;}
+	}
+}
+/*
+.btn-toolbar > .btn + .btn, 
+.btn-toolbar > .btn + .btn-group, 
+.btn-toolbar > .btn-group + .btn, 
+.btn-toolbar > .btn-group + .btn-group 
+*/
 h1,h2,h3 { font-family:$h-font-family;  }

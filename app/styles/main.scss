@@ -38,11 +38,11 @@ body {
 }
 
 .page-main {
-     //background:#CCC image-url('booth-repeat.jpg');
+     background:#F0F0F0;
     .page-mid{
         //color:#fff;
         padding:20px;
-        //background: #666 image-url('concrete-repeat.jpg');
+        background: #FFFFFF;
         min-height:500px;
         //@include text-shadow(#003 1px 1px 2px);
     }
@@ -57,7 +57,9 @@ body {
 }
 
 .jumbotron {
+    height:300px;
     margin:0;
+    padding:0;
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
     .btn {
@@ -66,9 +68,24 @@ body {
     }
 }
 
+.slideshow{
+    .slide{
+        color:#FFF;
+        @include text-shadow(1px 1px 2px #000);
+        @include background-size(cover);
+
+        background-position: center top;
+        min-height:300px;
+    }
+}
+
+
 .social-icons {
     $social: facebook, twitter, google, youtube, instagram;
-    @include cubo($array:$social,$img:"social-icons-32.gif", $size : 32px);
+    @include cubo($array:$social, $size : 32px);
+    a {
+        background:#000 image-url("social-icons-32.gif") no-repeat;
+    }
     padding:8px 0 0 0;
     list-style:none;
     li { float:left;margin:0 0 0 4px; padding:0; border:1px solid #444 }
@@ -213,6 +230,14 @@ body {
             min-height:200px;
             width:100%;
         }
+        .list-float {
+            padding:0;
+            margin: 0;
+            list-style: none;
+            li {
+                float: left;
+            }
+        }
         .thumbnail {
             position:relative;
             min-height:70px;
@@ -239,10 +264,24 @@ body {
     }
 }
 
+
 input[type='file'],
 input[type='file']::-webkit-file-upload-button {
     visibility: hidden;
     opacity:0;
     height:0;
     width:0;
+}
+
+.ta-editor {
+  border-radius:0 0 5px 5px;  
+  min-height: 300px;
+  height: auto;
+  overflow: auto;
+  font-family: inherit;
+  font-size: 100%;
+}
+
+.ace_editor{
+    min-height: 200px;
 }
