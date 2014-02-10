@@ -13,13 +13,6 @@
       <div class="row">
         <div class="col-sm-8">
 
-          <ul class="list-group">
-          <li class="list-group-item" ng-repeat="h in hazards">
-            <h3>{{h.title}}</h3>
-            <p ng-bind-html="h.body"> {{h.body}} </p>
-          </li>
-          </ul>
-
           <div class="thumbnail">
           <div ui-ace="{
             useWrapMode : true,
@@ -31,6 +24,7 @@
           }" ng-model="slideImages[0].content">
           </div>
           </div>
+
           <h3>Yeoman</h3>
           <p>
             Based on "generator-angular-fullstack" we're able to harness the generator concept

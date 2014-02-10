@@ -40,6 +40,9 @@ angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute',
   }).when('/media', {
     templateUrl: 'partials/media',
     controller: 'MediaCtrl'
+  }).when('/drupal', {
+    templateUrl: 'partials/drupal',
+    controller: 'DrupalCtrl'
   }).otherwise({
     redirectTo: '/'
   });
