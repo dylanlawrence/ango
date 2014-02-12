@@ -9,14 +9,15 @@
   <section class="page-main">
     <div class="container page-mid">
       <h2>Welcome <span ng-show="currentUser">{{ currentUser.name }}</span>!</h2>
-      {{scroll}}
+
       <div class="row">
         <div class="col-sm-8">
 
           <ul class="list-group">
           <li class="list-group-item" ng-repeat="h in hazards">
-            <h3>{{h.title}}</h3>
-            <p ng-bind-html="h.body"> {{h.body}} </p>
+            <h3>{{h.title[0].value}}</h3>
+
+            <p ng-bind-html="h.body[0].value"></p>
           </li>
           </ul>
 
