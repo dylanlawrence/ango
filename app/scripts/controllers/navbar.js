@@ -29,6 +29,21 @@ angular.module('angoApp')
       $scope.isCollapsed = !$scope.isCollapsed;
     }
 
+    $scope.toggleAside = function(){
+      var m = $scope.isCollapsed ? 0 : 300;
+    
+      if(!$scope.isCollapsed){
+        var w = $(window).width()-20; 
+        $('.container').width(w);
+      }
+      $('body').animate({'margin-left':m}, 
+      700, function(){
+        if($scope.isCollapsed){
+          $('.container').width('');
+        }
+      });
+    }
+
 
     $scope.logout = function() {
       Auth.logout().then(function() {

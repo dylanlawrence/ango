@@ -9,6 +9,8 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 	//$scope.scroll.$watch(function(){
 		
 	//});
+	
+
 	$rootScope.scrollTo = function(to){
 		$("html, body").delay(300).animate({scrollTop:to},{easing: "easeOutExpo"}, 2000);
 	}

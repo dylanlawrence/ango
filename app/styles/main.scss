@@ -69,6 +69,8 @@ body {
 }
 
 .slideshow{
+        background:image-url('blue-bg-leather.jpg');
+
     .slide{
         color:#FFF;
         @include text-shadow(1px 1px 2px #000);
@@ -176,9 +178,10 @@ body {
 
 .work {
 }
+
 .postscript{
     color:#CCC;
-    background: $color-bg-03;
+    background:image-url('blue-bg-leather.jpg');
 }
 
 

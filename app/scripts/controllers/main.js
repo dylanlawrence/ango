@@ -13,7 +13,7 @@ angular.module('angoApp').controller('MainCtrl', ['$scope', '$http', function($s
 
 
 	$scope.slideImages = [{
-		style: 'background-image:url(http://placehold.it/1920x300/5588BB/6699CC);',
+		style: '',
 		class: 'slide1',
 		content: '<h1>Slide 1</h1><p class="lead"><span style="background:#FFF; border-radius:10px"><img src="images/logo-sm.png" alt=""></span> = Angular and Node Expressing with Mongo.</p><p><a class="btn btn-lg btn-success" ng-href="#">Check It!</a></p>'
 	}, {
