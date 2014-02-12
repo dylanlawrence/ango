@@ -1,11 +1,13 @@
 <div class="page-home">
-  <div class="jumbotron">
-    <ul rn-carousel class="slideshow">
+
+  <div class="jumbotron slideshow">
+    <ul rn-carousel>
       <li ng-repeat="s in slideImages" ng-bind-html="s.content" class="slide {{ s.class }}"
       style="{{ s.style }}">
       </li>
     </ul>
   </div>
+
   <section class="page-main">
     <div class="container page-mid">
       <h2>Welcome <span ng-show="currentUser">{{ currentUser.name }}</span>!</h2>
