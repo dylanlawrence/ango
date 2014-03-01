@@ -6,12 +6,6 @@ angular.module('angoApp').controller('MainCtrl', ['$scope', '$http', function($s
 		$scope.awesomeThings = awesomeThings;
 	});
 
-	$http.get('/api/hazards').success(function(hazards) {
-		$scope.hazards = hazards;
-	});
-	
-
-
 	$scope.slideImages = [{
 		style: '',
 		class: 'slide1',
