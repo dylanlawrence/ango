@@ -1,5 +1,4 @@
 <div class="page-home">
-
   <div class="jumbotron slideshow">
     <ul rn-carousel>
       <li ng-repeat="s in slideImages" ng-bind-html="s.content" class="slide {{ s.class }}"
@@ -7,16 +6,23 @@
       </li>
     </ul>
   </div>
-
   <section class="page-main">
     <div class="container page-mid">
       <h2>Welcome <span ng-show="currentUser">{{ currentUser.name }}</span>!</h2>
-      {{scroll}}
+
+      <progressbar value="percent1">
+      </progressbar>
+      {{percent1}}
+      <progressbar value="percent2">
+      </progressbar>
+      {{percent2}}
+
+
+      <span fx-scroll-top="scroll1" fx-percent="percent1">{{scroll1}} {{percent1}}</span>
       <div class="row">
         <div class="col-sm-8">
-
           <div class="thumbnail">
-          <div ui-ace="{
+            <div ui-ace="{
             useWrapMode : true,
             showGutter: true,
             theme:'cobalt',
@@ -24,8 +30,11 @@
             onLoad: aceLoaded,
             onChange: aceChanged
           }" ng-model="slideImages[0].content">
+            </div>
           </div>
-          </div>
+
+          <span fx-scroll-top="scroll2" fx-percent="percent2">{{scroll2}} {{percent2}}</span>
+        
 
           <h3>Yeoman</h3>
           <p>
@@ -99,6 +108,10 @@
           </div>
         </div>
       </div>
+
+      <progressbar value="percent3">
+      </progressbar>
+      <span fx-scroll-top="scroll3" fx-percent="percent3"></span>
     </div>
   </section>
 </div>

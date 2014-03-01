@@ -20,7 +20,8 @@
     "angular-truncate": "*",
     "jquery-easing": "*",
     "angular-ui-ace": "*",
-    "angular-ui-sortable": "~0.10.0"
+    "angular-ui-sortable": "~0.10.0",
+    "angular-ui-utils": "bower"
   },
   "devDependencies": {
     "angular-mocks": "1.2.10",

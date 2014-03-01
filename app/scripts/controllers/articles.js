@@ -1,19 +1,21 @@
 'use strict';
 angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 'Files', '$timeout', '$q', function($scope, $routeParams, $location, Global, Articles, Files, $timeout, $q) {
-    
-    $scope.global = Global;
-    $scope.article = {'media':[]};
-    
-  $scope.open = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
 
-    $scope.opened = true;
-  };
-$scope.dateOptions = {
-    'year-format': "'yy'",
-    'starting-day': 1
-  };
+    $scope.global = Global;
+    $scope.article = {
+        'media': []
+    };
+
+    $scope.open = function($event) {
+        $event.preventDefault();
+        $event.stopPropagation();
+
+        $scope.opened = true;
+    };
+    $scope.dateOptions = {
+        'year-format': "'yy'",
+        'starting-day': 1
+    };
 
     $scope.newArticle = function() {
         $scope.media = '';
@@ -22,7 +24,7 @@ $scope.dateOptions = {
         $scope.content = '';
         Files.setSelected([]);
     }
-    
+
     $scope.$on('mediaUpdate', function() {
         $scope.media = Files.selected;
         $scope.mediaDisplay = Files.selectedMedia;

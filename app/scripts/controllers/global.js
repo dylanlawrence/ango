@@ -1,19 +1,41 @@
 'use strict';
 
-angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$http', function($scope, $rootScope, $http) {
+angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$http', '$route', '$timeout', '$window', '$location', '$routeParams', '$filter',
+	function($scope, $rootScope, $http, $route , $timeout, $window, $location, $routeParams, $filter) {
 
 	$scope.scroll = 0;
+	var inflector = $filter('inflector');
 
-	$scope.bodyClassObj = {default:'body', context:'page_', topnav:'topnav-hidden'};
 
-	//$scope.scroll.$watch(function(){
+	$scope.bodyClassObj = {default:'body', context:'page-', topnav:'topnav-hidden'};
+/*
+	$scope.$watch('scroll', function(){
 		
-	//});
-	
+	});
+*/
+	$($window).on('resize', function() {
+		$scope.width = $(window).width();
+		$scope.height = $(window).height();
+	    $rootScope.$broadcast('_resize_now');
+
+		$timeout.cancel($scope.tout);	
+		$scope.tout = $timeout(function(){
+			$rootScope.$broadcast('update');
+		},200);
+	});
 
 	$rootScope.scrollTo = function(to){
 		$("html, body").delay(300).animate({scrollTop:to},{easing: "easeOutExpo"}, 2000);
 	}
+
+	$scope.$on('update', function(){
+		$scope.bp = {xs:false,sm:false,md:false,lg:false,port:false}
+		$scope.bodyClassObj.orientation = 'landscape';
+		$scope.bodyClassObj.device = 'desktop';
+		$scope.matchM();
+		$scope.device = 'fa-' + $scope.bodyClassObj.device;
+		//$scope.setNavMainBtn();
+	});
 
 	$scope.matchM = function(){
 
@@ -44,6 +66,18 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 
 	}
 
+	$scope.$route = $route;
+	$scope.$location = $location;
+	$scope.$routeParams = $routeParams;
+
+	//$scope.path = $location.path();
+	$rootScope.$on('$routeChangeStart', function(e, curr, prev) {
+		var path = $location.path();
+		var context = path.replace(/\//g,'');
+		$scope.bodyClassObj.context = inflector('page-'+context, 'underscore');
+
+		$scope.title = "Ango - " + context;
+	});
 
 
 	$scope.getBodyClass = function() {

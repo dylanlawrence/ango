@@ -1,25 +1,25 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" ng-app="angoApp" ng-controller="GlobalCtrl" > <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" ng-app="angoApp" ng-controller="GlobalCtrl" > <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" ng-app="angoApp" ng-controller="GlobalCtrl" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" ng-app="angoApp" ng-controller="GlobalCtrl" > <!--<![endif]-->
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <base href="/">
-    <title>Ango</title>
+    <title ng-bind="title">Ango</title>
     <meta name="description" content="Javascript Fullstack Developement Template">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     
     <meta name="fragment" content="!" />
 
     <meta property="fb:app_id" content="216788918360053">
-    <meta property="og:title" content="#{appName} - #{title}">
-    <meta property="og:description" content="Ango">
+    <meta property="og:title" content="{{title}}">
+    <meta property="og:description" content="{{description}}">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="APP_URL">
-    <meta property="og:image" content="APP_LOGO">
-    <meta property="og:site_name" content="MEAN - A Modern Stack">
+    <meta property="og:url" content="/">
+    <meta property="og:image" content="images/logo-sm.png">
+    <meta property="og:site_name" content="{{title}}">
     <meta property="fb:admins" content="APP_ADMIN">
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -45,7 +45,7 @@
     </script>
 
   </head>
-  <body ng-app="angoApp" ng-controller="GlobalCtrl" ng-class="getBodyClass();">
+  <body ng-class="getBodyClass();">
     
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -82,9 +82,6 @@
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
 
-<!--script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script -->
-<script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
-
 <!-- build:js(app) scripts/vendor.js -->
 <!-- bower:js -->
 <script src="bower_components/jquery/jquery.js"></script>
@@ -102,8 +99,8 @@
 <script src="bower_components/jquery-easing/jquery.easing.js"></script>
 <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
 <script src="bower_components/angular-ui-sortable/src/sortable.js"></script>
+<script src="bower_components/angular-ui-utils/ui-utils.js"></script>
 <!-- endbower -->
-
 <script src="bower_components/angular-truncate/dist/angular-truncate.js"></script>
 <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.10.0.js"></script>    
 <!-- endbuild -->
@@ -139,6 +136,8 @@
 <script src="scripts/services/animFrame.js"></script>
 <!-- endbuild -->
 
+<!--script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script -->
+<script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
 
 <script src="bower_components/socket.io/socket.io.min.js"></script>
 <script>
