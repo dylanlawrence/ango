@@ -35,3 +35,9 @@
 .btn-toolbar > .btn-group + .btn-group 
 */
 h1,h2,h3 { font-family:$h-font-family;  }
+
+.thumbnail {
+	.inner{ overflow:hidden; 
+		margin:0 auto;  
+	}
+}

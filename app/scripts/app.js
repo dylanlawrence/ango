@@ -1,8 +1,14 @@
 'use strict';
 
-angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 
-  'ui.bootstrap', 'ui.ace', 'ui.sortable', 'angularFileUpload', 'textAngular', 'angular-carousel', 'filters'])
+angular.module('ui.utils',[
+  "ui.event",
+  "ui.inflector"
+]);
+
+angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.utils', 
+  'ui.bootstrap', 'loggedin', 'ng.picturefill', 'angularFileUpload', 'textAngular', 'angular-carousel', 'filters'])
 .config(function($routeProvider, $locationProvider, $httpProvider) {
+  
   $routeProvider.when('/', {
     templateUrl: 'partials/main',
     controller: 'MainCtrl'

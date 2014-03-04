@@ -8,14 +8,13 @@ $use-mozilla-ellipsis-binding: true;
 
 
 
-/* Small device vertical */
-@media (max-width: $screen-xs-min) { 
 
-    .col-xs-6 { width:100%}
-}
 
-/* Small devices (tablets, 768px and up) */
-@media (max-width: $screen-sm-min) { 
+/* Small devices (tablets, 768px) */
+@media (max-width: ($screen-sm-min - 1) ) { 
+
+    .col-xs-half { width:50%; float:left; padding:4px; }
+
     .nav {
         padding:2px 20px;
         & > li { 
@@ -31,6 +30,13 @@ $use-mozilla-ellipsis-binding: true;
     }
 }
 
+/* Small device vertical */
+@media (max-width: $screen-xs-min) { 
+
+    .col-xs-6 { width:100% }
+    .col-xs-half { width:100%; float:none; padding:4px; }
+
+}
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: $screen-sm-min) { 
@@ -50,8 +56,6 @@ $use-mozilla-ellipsis-binding: true;
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: $screen-md-min) {  
     
-
-
 }
 
 /* Large devices (large desktops, 1200px and up) */
