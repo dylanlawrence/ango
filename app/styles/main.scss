@@ -16,21 +16,31 @@ body {
   display:block
 }
 
+.pfill {
+    display: inline-block;
+    
+    position:relative; right: -50%;
+
+    & > span {
+        position: relative; 
+        left:-50%;
+    }
+}
+
 #navMain {
 
     //&.navbar { background-color:#036}
-    .navbar-brand { padding:8px}
+    .navbar-brand { padding:8px 10px 4px 10px }
     button{
         color:#CCC;
     }
     .pointer {
         position:absolute;
-        top:50px;
+        top:51px;
         width:100%;
         left:0;
-        background:#CCC;
         text-align:center;
-        @include transition-property(left, width, top);
+        @include transition-property(left, top, font-size);
         @include transition-duration(500ms);
         @include transition-timing-function(ease);
     }

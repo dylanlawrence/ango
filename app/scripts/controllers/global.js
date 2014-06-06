@@ -10,9 +10,9 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 	$scope.bodyClassObj = {default:'body', context:'page-', topnav:'topnav-hidden'};
 /*
 	$scope.$watch('scroll', function(){
-		
 	});
 */
+
 	$($window).on('resize', function() {
 		$scope.width = $(window).width();
 		$scope.height = $(window).height();
@@ -21,7 +21,7 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 		$timeout.cancel($scope.tout);	
 		$scope.tout = $timeout(function(){
 			$rootScope.$broadcast('update');
-		},200);
+		},100);
 	});
 
 	$rootScope.scrollTo = function(to){
@@ -34,7 +34,7 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 		$scope.bodyClassObj.device = 'desktop';
 		$scope.matchM();
 		$scope.device = 'fa-' + $scope.bodyClassObj.device;
-		//$scope.setNavMainBtn();
+		$scope.setNavMainBtn();
 	});
 
 	$scope.matchM = function(){
@@ -63,8 +63,24 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 			$scope.bp.xs = true;
 			$scope.bodyClassObj.device = 'mobile';
 		}
-
 	}
+
+
+	$scope.setNavMainBtn = function() {
+		var c = "fa-chevron-down";
+		if( $scope.bodyClassObj.topnav != 'topnav-hidden'){
+			c = "fa-chevron-up";
+		}
+		if ($scope.bp.xs && !$scope.bp.port) {
+			c = "fa-chevron-right";
+			if( $scope.bodyClassObj.topnav != 'topnav-hidden'){
+				c = "fa-chevron-left";
+			}
+		}
+		$scope.navMainBtn = c;
+	}
+
+
 
 	$scope.$route = $route;
 	$scope.$location = $location;

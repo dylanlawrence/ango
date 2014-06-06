@@ -97,13 +97,25 @@
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-rn-carousel/dist/angular-carousel.js"></script>
 <script src="bower_components/jquery-easing/jquery.easing.js"></script>
+<script src="bower_components/jquery-easing/jquery.easing.min.js"></script>
 <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
 <script src="bower_components/angular-ui-sortable/sortable.js"></script>
 <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
+<script src="bower_components/picturefill/picturefill.js"></script>
+<script src="bower_components/angular-picturefill/angular-picturefill.js"></script>
 <!-- endbower -->
 <script src="bower_components/angular-truncate/dist/angular-truncate.js"></script>
 <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.10.0.js"></script>    
 <!-- endbuild -->
+
+<script>
+
+angular.module('loggedin',[
+  "ui.ace",
+  'ui.sortable'
+]);
+
+</script>
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
 <script src="scripts/app.js"></script>
@@ -135,6 +147,7 @@
 <script src="scripts/controllers/drupal.js"></script>
 <script src="scripts/services/animFrame.js"></script>
 <!-- endbuild -->
+
 
 <!--script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script -->
 <script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>

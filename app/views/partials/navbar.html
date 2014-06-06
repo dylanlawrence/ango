@@ -1,16 +1,18 @@
 
 <div class="container">
 		<div class="navbar-header">
+          
           <button type="button" class="navbar-toggle" ng-click="toggleNav()">
             <span class="sr-only">Toggle navigation</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
+
           <a class="navbar-brand" href="/"><img src="images/logo-sm.png"/></a>
         </div>
 
-		<div collapse="isCollapsed">
+		<div id="top-nav" collapse="isCollapsed">
 			<ul class="nav navbar-nav">
 				<li ng-repeat="item in menu" ng-class="{active: isActive(item.link)}">
 					<a ng-href="{{item.link}}">{{item.title}}</a>
@@ -38,7 +40,7 @@
 
 			</ul>
 
-
+			<div class="pointer fa fa-chevron-up"></div>
 		</div>
 </div>
 

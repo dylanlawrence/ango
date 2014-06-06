@@ -1,10 +1,12 @@
 'use strict';
+
 angular.module('ui.utils',[
   "ui.event",
   "ui.inflector"
 ]);
+
 angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.utils', 
-  'ui.bootstrap', 'ui.ace', 'ui.sortable', 'angularFileUpload', 'textAngular', 'angular-carousel', 'filters'])
+  'ui.bootstrap', 'loggedin', 'ng.picturefill', 'angularFileUpload', 'textAngular', 'angular-carousel', 'filters'])
 .config(function($routeProvider, $locationProvider, $httpProvider) {
   
   $routeProvider.when('/', {

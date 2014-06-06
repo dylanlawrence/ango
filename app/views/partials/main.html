@@ -10,15 +10,8 @@
     <div class="container page-mid">
       <h2>Welcome <span ng-show="currentUser">{{ currentUser.name }}</span>!</h2>
 
-      <progressbar value="percent1">
-      </progressbar>
-      {{percent1}}
-      <progressbar value="percent2">
-      </progressbar>
-      {{percent2}}
 
 
-      <span fx-scroll-top="scroll1" fx-percent="percent1">{{scroll1}} {{percent1}}</span>
       <div class="row">
         <div class="col-sm-8">
           <div class="thumbnail">
@@ -33,8 +26,10 @@
             </div>
           </div>
 
-          <span fx-scroll-top="scroll2" fx-percent="percent2">{{scroll2}} {{percent2}}</span>
-        
+      <span fx-scroll-top="scroll2" fx-percent="percent2">{{scroll2}} {{percent2}}</span>
+          
+              <progressbar value="percent2">
+              </progressbar>
 
           <h3>Yeoman</h3>
           <p>
@@ -52,12 +47,48 @@
             </li>
           </ul>
         </div>
+
         <div class="col-sm-4">
-          <div class="thumbnail">
-            <img src="http://placehold.it/200x350">
+
+          <div class="col-xs-half">
+            <div class="thumbnail">
+              <div class="inner">
+              <span fx-scroll-top="scroll1" fx-percent="percent1"></span>
+              <progressbar value="percent1">
+              </progressbar>
+
+              <span picture-fill data-alt="test" class="pfill">
+                <span pf-src="http://placehold.it/480x100/6699CC/5577AA" data-media="(min-width: 1px)"></span>
+                <span pf-src="http://placehold.it/336x200/6699CC/5577AA" data-media="(min-width: 481px)"></span>
+                <span pf-src="http://placehold.it/210x350/6699CC/5577AA" data-media="(min-width: 768px)"></span>
+                <span pf-src="http://placehold.it/283x350/6699CC/5577AA" data-media="(min-width: 992px)"></span>
+                <span pf-src="http://placehold.it/350x350/6699CC/5577AA" data-media="(min-width: 1200px)"></span>
+              </span>  
+              </div>
+            </div>
+
           </div>
+
+          <div class="col-xs-half">
+            <div class="thumbnail">
+              <div class="inner">
+              <span picture-fill data-alt="test" class="pfill">
+                <span pf-src="http://placehold.it/480x100/336699/6699CC" data-media="(min-width: 1px)"></span>
+                <span pf-src="http://placehold.it/336x200/336699/6699CC" data-media="(min-width: 481px)"></span>
+                <span pf-src="http://placehold.it/210x350/336699/6699CC" data-media="(min-width: 768px)"></span>
+                <span pf-src="http://placehold.it/283x350/336699/6699CC" data-media="(min-width: 992px)"></span>
+                <span pf-src="http://placehold.it/350x350/336699/6699CC" data-media="(min-width: 1200px)"></span>
+              </span>
+              </div>
+            </div>
+          </div>
+
         </div>
+
       </div>
+
+      <hr/>
+
       <div class="row">
         <div class="col-sm-4">
           <div class="well">
