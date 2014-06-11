@@ -1,29 +1,41 @@
 'use strict';
-angular.module('angoApp').controller('NavbarCtrl', ['$scope', '$rootScope', '$location', 'Auth', '$timeout', function($scope, $rootScope, $location, Auth, $timeout) {
+angular.module('angoApp').controller('NavbarCtrl', ['$scope', '$route', '$rootScope', '$location', 'Auth', '$timeout', function($scope, $route, $rootScope, $location, Auth, $timeout) {
   
   $scope.isCollapsed = true;
   
-  $scope.menu = [{
+  $scope.menus = {};
+
+  $scope.menus.main = [{
     'title': 'Home',
-    'link': '/'
+    'link': '/',
+    'route': '/'
   }, {
     'title': 'About',
-    'link': '/about'
+    'link': '/about',
+    'route': '/about'
   }, {
     'title': 'Blog',
-    'link': '/articles'
+    'link': '/articles',
+    'route': '/articles',
+    c:[{ 
+        'title': 'Articles',
+        'link': '/articles',
+        'route': '/articles/:articleId'
+      }]
   }, {
     'title': 'Contact',
-    'link': '/contact'
+    'link': '/contact',
+    'route': '/contact'
   }];
 
   $rootScope.$on('$routeChangeStart', function(e, curr, prev) {
     $scope.isCollapsed = true;
   });
 
-  $rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
-    $rootScope.$broadcast('update');
-  });
+  //$rootScope.$on('$routeChangeSuccess', function(e, curr, prev) {
+    // console.log($route, $location);
+   // $rootScope.$broadcast('update');
+  //});
 
   $scope.toggleNav = function() {
     $scope.isCollapsed = !$scope.isCollapsed;
@@ -48,13 +60,19 @@ angular.module('angoApp').controller('NavbarCtrl', ['$scope', '$rootScope', '$lo
   }
 
   $scope.$on('update', function() {
-    $scope.setPointer();
+    $timeout(function(){
+      $scope.setPointer();
+    }, 700);
   });
 
-  $scope.activePos = function(){
-    var o = jQuery('#top-nav li.active').offset();
-      o.w = jQuery('#top-nav li.active').width();
-      o.h = jQuery('#top-nav li.active').height();
+  $scope.activePos = function() {
+
+    var o = {left:0,top:0,w:0,h:0}
+    if(jQuery('#top-nav li.active').length > 0){
+      var o = jQuery('#top-nav li.active').offset();
+        o.w = jQuery('#top-nav li.active').width();
+        o.h = jQuery('#top-nav li.active').height();
+    }
     return o;
   }
 
@@ -76,7 +94,43 @@ angular.module('angoApp').controller('NavbarCtrl', ['$scope', '$rootScope', '$lo
     });
   };
 
+
+  
+
   $scope.isActive = function(route) {
-    return route === $location.path();
+
+    if($route.routes[route]){
+      var path = $scope.switchRouteMatcher($location.path(),  $route.routes[route] );
+      //console.log("PATH", path);
+      return path;
+    }
+    //console.log($route.routes[route].regexp);
+    return; //
+
+    //route === $location.path();
   };
+
+  $scope.switchRouteMatcher = function(on, route) {
+      var keys = route.keys,
+          params = {};
+
+      if (!route.regexp) return null;
+
+      var m = route.regexp.exec(on);
+      if (!m) return null;
+
+      for (var i = 1, len = m.length; i < len; ++i) {
+        var key = keys[i - 1];
+
+        var val = 'string' == typeof m[i]
+              ? decodeURIComponent(m[i])
+              : m[i];
+
+        if (key && val) {
+          params[key.name] = val;
+        }
+      }
+      return params;
+    }
+  
 }]);

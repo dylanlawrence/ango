@@ -25,17 +25,20 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(app) styles/vendor.css -->
     <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/angular-rn-carousel/dist/angular-carousel.css" />
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
+    <link rel="stylesheet" href="bower_components/angular-carousel/dist/angular-carousel.css" />
     <!-- endbower -->
     <!-- endbuild -->
     
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+    <!--
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Ubuntu:400,700' rel='stylesheet' type='text/css'>
-
+    -->
+    
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/boot.css">
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/style.css">
     <!-- endbuild -->
 
 
@@ -52,7 +55,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div id="navMain" class="navbar navbar-inverse navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl" ng-include="'partials/navbar'"></div>
+    <div id="navMain" class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl" ng-include="'partials/navbar'"></div>
 
     
     <div id="all" ng-cloak>
@@ -81,11 +84,15 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
+</body>
+
+<% for(var i=0; i<scripts.length; i++) { %>
+    <script type="text/javascript" src="<%=scripts[i]%>"></script>
+<% } %>
 
 <!-- build:js(app) scripts/vendor.js -->
 <!-- bower:js -->
-<script src="bower_components/jquery/jquery.js"></script>
-<script src="bower_components/jquery-ui/ui/jquery-ui.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-resource/angular-resource.js"></script>
 <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -94,18 +101,17 @@
 <script src="bower_components/angular-animate/angular-animate.js"></script>
 <script src="bower_components/angular-file-upload/angular-file-upload.js"></script>
 <script src="bower_components/textAngular/dist/textAngular.min.js"></script>
-<script src="bower_components/angular-touch/angular-touch.js"></script>
-<script src="bower_components/angular-rn-carousel/dist/angular-carousel.js"></script>
+<script src="bower_components/angular-truncate/src/truncate.js"></script>
 <script src="bower_components/jquery-easing/jquery.easing.js"></script>
-<script src="bower_components/jquery-easing/jquery.easing.min.js"></script>
 <script src="bower_components/angular-ui-ace/ui-ace.js"></script>
 <script src="bower_components/angular-ui-sortable/sortable.js"></script>
 <script src="bower_components/angular-ui-utils/ui-utils.js"></script>
-<script src="bower_components/picturefill/picturefill.js"></script>
-<script src="bower_components/angular-picturefill/angular-picturefill.js"></script>
+<script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
+<script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
 <!-- endbower -->
-<script src="bower_components/angular-truncate/dist/angular-truncate.js"></script>
-<script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.10.0.js"></script>    
+  <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.11.0.js"></script>
 <!-- endbuild -->
 
 <script>
@@ -146,12 +152,11 @@ angular.module('loggedin',[
 <script src="scripts/controllers/media.js"></script>
 <script src="scripts/controllers/drupal.js"></script>
 <script src="scripts/services/animFrame.js"></script>
+<script src="scripts/controllers/tree.js"></script>
 <!-- endbuild -->
 
-
 <!--script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script -->
-<script src="bower_components/ace-builds/src-min-noconflict/ace.js"></script>
-
+<!--
 <script src="bower_components/socket.io/socket.io.min.js"></script>
 <script>
   //var socket = io.connect('http://dylanlawrence.com');
@@ -163,6 +168,10 @@ angular.module('loggedin',[
   });
   
 </script>
+-->
+
+
+ <script src="bower_components/picturefill/dist/picturefill.js"></script>  
 
 
 </body> 

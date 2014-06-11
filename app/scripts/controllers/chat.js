@@ -5,7 +5,7 @@ angular.module('angoApp').controller('ChatCtrl', ['$scope', '$http', 'Global', '
 	$scope.global = Global;
 
 	$scope.messages = [];
-
+/*
 	socket.on('user:connected', function() {
 		//alert('user:connected');
 		$scope.getUsers();
@@ -15,7 +15,7 @@ angular.module('angoApp').controller('ChatCtrl', ['$scope', '$http', 'Global', '
 		//alert('user:disconnected');;
 		$scope.getUsers();
 	});
-
+*/
 	$scope.send = function() {
 		socket.emit('send:message', {
 			user: $scope.global.user._id,

@@ -1,36 +1,42 @@
 <div class="page-home">
-  <div class="jumbotron slideshow">
+  
+
+  <div class="jumbotron">
+
+    <picture data-alt="Agno Logo">
+        <source srcset="images/logo-sm.gif" data-media="(min-width: 0)">
+        <source srcset="images/logo.gif" data-media="(min-width: 768px)">
+        <img srcset="images/logo-sm.gif"/>
+    </picture>
+
+    <div class="container" style="text-align:center">
+      <h1>A toolbox for the mobile web.</h1>
+      <h4>Starting blocks for Angular Node Mango with Express.</h4>
+    </div>
+  </div>
+
+
+  <div class="carousel">
     <ul rn-carousel>
-      <li ng-repeat="s in slideImages" ng-bind-html="s.content" class="slide {{ s.class }}"
-      style="{{ s.style }}">
+      <li ng-repeat="s in slideImages" scope="" onload="" class="slide slide{{$index}}">
+        <div ng-include="s.template"></div>
       </li>
     </ul>
   </div>
+
+
   <section class="page-main">
     <div class="container page-mid">
       <h2>Welcome <span ng-show="currentUser">{{ currentUser.name }}</span>!</h2>
-
-
-
       <div class="row">
         <div class="col-sm-8">
           <div class="thumbnail">
-            <div ui-ace="{
-            useWrapMode : true,
-            showGutter: true,
-            theme:'cobalt',
-            mode: 'html',
-            onLoad: aceLoaded,
-            onChange: aceChanged
-          }" ng-model="slideImages[0].content">
-            </div>
+
+
           </div>
-
-      <span fx-scroll-top="scroll2" fx-percent="percent2">{{scroll2}} {{percent2}}</span>
-          
-              <progressbar value="percent2">
-              </progressbar>
-
+          <span fx-scroll-top="scroll2" fx-percent="percent2">{{scroll2}} {{percent2}}</span>
+          <progressbar value="percent2">
+          </progressbar>
           <h3>Yeoman</h3>
           <p>
             Based on "generator-angular-fullstack" we're able to harness the generator concept
@@ -47,62 +53,53 @@
             </li>
           </ul>
         </div>
-
         <div class="col-sm-4">
+          <progressbar value="percent1"></progressbar>
+
 
           <div class="col-xs-half">
             <div class="thumbnail">
               <div class="inner">
-              <span fx-scroll-top="scroll1" fx-percent="percent1"></span>
-              <progressbar value="percent1">
-              </progressbar>
+                <span fx-scroll-top="scroll1" fx-percent="percent1"></span>
+          
 
-              <span picture-fill data-alt="test" class="pfill">
-                <span pf-src="http://placehold.it/480x100/6699CC/5577AA" data-media="(min-width: 1px)"></span>
-                <span pf-src="http://placehold.it/336x200/6699CC/5577AA" data-media="(min-width: 481px)"></span>
-                <span pf-src="http://placehold.it/210x350/6699CC/5577AA" data-media="(min-width: 768px)"></span>
-                <span pf-src="http://placehold.it/283x350/6699CC/5577AA" data-media="(min-width: 992px)"></span>
-                <span pf-src="http://placehold.it/350x350/6699CC/5577AA" data-media="(min-width: 1200px)"></span>
-              </span>  
+                <picture data-alt="test">
+                <source srcset="http://placehold.it/350x350/6699CC/5577AA" data-media="(min-width: 1200px)"/>
+                <source srcset="http://placehold.it/283x350/6699CC/5577AA" data-media="(min-width: 992px)"/>
+                <source srcset="http://placehold.it/210x350/6699CC/5577AA" data-media="(min-width: 768px)"/>
+                <source srcset="http://placehold.it/336x200/6699CC/5577AA" data-media="(min-width: 481px)"/>
+                <source srcset="http://placehold.it/480x100/6699CC/5577AA" data-media="(min-width: 1px)"/>  
+                <img srcset="http://placehold.it/480x100/6699CC/5577AA" />    
+                </picture>
+
               </div>
             </div>
-
           </div>
-
           <div class="col-xs-half">
             <div class="thumbnail">
               <div class="inner">
-              <span picture-fill data-alt="test" class="pfill">
-                <span pf-src="http://placehold.it/480x100/336699/6699CC" data-media="(min-width: 1px)"></span>
-                <span pf-src="http://placehold.it/336x200/336699/6699CC" data-media="(min-width: 481px)"></span>
-                <span pf-src="http://placehold.it/210x350/336699/6699CC" data-media="(min-width: 768px)"></span>
-                <span pf-src="http://placehold.it/283x350/336699/6699CC" data-media="(min-width: 992px)"></span>
-                <span pf-src="http://placehold.it/350x350/336699/6699CC" data-media="(min-width: 1200px)"></span>
-              </span>
+                <picture data-alt="test" class="pfill">
+                <source srcset="http://placehold.it/350x350/336699/6699CC" data-media="(min-width: 1200px)"/>
+                <source srcset="http://placehold.it/283x350/336699/6699CC" data-media="(min-width: 992px)"/>
+                <source srcset="http://placehold.it/210x350/336699/6699CC" data-media="(min-width: 768px)"/>
+                <source srcset="http://placehold.it/336x200/336699/6699CC" data-media="(min-width: 481px)"/>                
+                <source srcset="http://placehold.it/480x100/336699/6699CC" data-media="(min-width: 1px)"/>
+                <img srcset="http://placehold.it/480x100/336699/6699CC"/>
+                </picture>
               </div>
             </div>
           </div>
-
         </div>
-
       </div>
-
       <hr/>
-
       <div class="row">
         <div class="col-sm-4">
           <div class="well">
             <h3>Column 1</h3>
             <ul class="list-unstyled">
-              <li>
-                <a href="">Item 1</a>
-              </li>
-              <li>
-                <a href="">Item 2</a>
-              </li>
-              <li>
-                <a href="">Item 3</a>
-              </li>
+              <li><a href="">Item 1</a></li>
+              <li><a href="">Item 2</a></li>
+              <li><a href="">Item 3</a></li>
             </ul>
           </div>
         </div>
@@ -139,7 +136,6 @@
           </div>
         </div>
       </div>
-
       <progressbar value="percent3">
       </progressbar>
       <span fx-scroll-top="scroll3" fx-percent="percent3"></span>

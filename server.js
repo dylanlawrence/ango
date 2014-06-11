@@ -3,52 +3,42 @@
 var express = require('express'),
     path = require('path'),
     fs = require('fs'),
-    http = require('http'),
     mongoose = require('mongoose');
 
 /**
  * Main application file
  */
 
-// Default node environment to development
+// Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-// Application Config
-var config = require('./lib/config/config'),
-	auth = require('./lib/config/authorization');
-
-// Connect to database
+var config = require('./lib/config/config');
 var db = mongoose.connect(config.mongo.uri, config.mongo.options);
 
 // Bootstrap models
 var modelsPath = path.join(__dirname, 'lib/models');
 fs.readdirSync(modelsPath).forEach(function (file) {
-  require(modelsPath + '/' + file);
+  if (/(.*)\.(js$|coffee$)/.test(file)) {
+    require(modelsPath + '/' + file);
+  }
 });
 
-// 	Populate empty DB with sample data
+// Populate empty DB with sample data
 require('./lib/config/dummydata');
 
 // Passport Configuration
-require('./lib/config/passport')();
+var passport = require('./lib/config/passport');
 
-var app = express(),
-  server = http.createServer(app),
-  io = require('socket.io').listen(server);
+// Setup Express
+var app = express();
+//var io = require('socket.io')(app);
 
-// messenger
-var messages = [];
-require('./lib/controllers/messenger')(io, messages);
-
-// Express settings
 require('./lib/config/express')(app);
-
-// Routing
-require('./lib/routes')(app, auth);
+require('./lib/routes')(app);
 
 // Start server
-server.listen(config.port, function () {
-  console.log('Express server listening on port %d in %s mode', config.port, app.get('env'));
+app.listen(config.port, config.ip, function () {
+  console.log('Express server listening on %s:%d, in %s mode', config.ip, config.port, app.get('env'));
 });
 
 // Expose app

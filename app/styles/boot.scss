@@ -1,7 +1,9 @@
 //$icon-font-path: "/bower_components/sass-bootstrap/fonts/";
-
+@import 'bootswatch/variables';
 @import 'variables';
 @import 'sass-bootstrap/lib/bootstrap_custom';
+@import 'bootswatch/bootswatch';
+
 
 
 .clean {

@@ -2,11 +2,13 @@
 
 angular.module('ui.utils',[
   "ui.event",
-  "ui.inflector"
+  "ui.inflector",
+  'ui.tree',
 ]);
 
 angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.utils', 
-  'ui.bootstrap', 'loggedin', 'ng.picturefill', 'angularFileUpload', 'textAngular', 'angular-carousel', 'filters'])
+  'ui.bootstrap', 'loggedin', 'angularFileUpload', 'textAngular', 'angular-carousel', 'filters', 'LocalStorageModule'])
+
 .config(function($routeProvider, $locationProvider, $httpProvider) {
   
   $routeProvider.when('/', {
@@ -49,6 +51,9 @@ angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', '
   }).when('/drupal', {
     templateUrl: 'partials/drupal',
     controller: 'DrupalCtrl'
+  }).when('/tree', {
+    templateUrl: 'partials/tree',
+    controller: 'TreeCtrl'
   }).otherwise({
     redirectTo: '/'
   });
@@ -68,17 +73,29 @@ angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', '
       }
     };
   }]);
-}).run(function($rootScope, $location, Auth) {
+  
+}).run(function($rootScope, $location,$timeout, Auth) {
 
   // Redirect to login if route requires auth and you're not logged in
   $rootScope.$on('$routeChangeStart', function(event, next) {
     if (next.authenticate && !Auth.isLoggedIn()) {
       $location.path('/login');
-    }
+    }    
   });
 
   $rootScope.$on('$routeChangeSuccess', function(event, next) {
-
     $rootScope.scrollTo(0);
+    $rootScope.$broadcast('update');  
+    $timeout(function(){
+      picturefill({ reevaluate: true });
+    }, 50);
+
   });
+
+
+  $timeout(function(){
+    picturefill({ reevaluate: true });
+  }, 2000);
+
 });
+
