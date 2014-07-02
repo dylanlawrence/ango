@@ -1,21 +1,15 @@
 <div class="page-home">
-  
-
   <div class="jumbotron">
-
     <picture data-alt="Agno Logo">
-        <source srcset="images/logo-sm.gif" data-media="(min-width: 0)">
+      <source srcset="images/logo-sm.gif" data-media="(min-width: 0)">
         <source srcset="images/logo.gif" data-media="(min-width: 768px)">
-        <img srcset="images/logo-sm.gif"/>
+          <img srcset="images/logo-sm.gif" />
     </picture>
-
     <div class="container" style="text-align:center">
-      <h1>A toolbox for the mobile web.</h1>
+      <h1>A Toolbox for Modern Applications.</h1>
       <h4>Starting blocks for Angular Node Mango with Express.</h4>
     </div>
   </div>
-
-
   <div class="carousel">
     <ul rn-carousel>
       <li ng-repeat="s in slideImages" scope="" onload="" class="slide slide{{$index}}">
@@ -23,8 +17,6 @@
       </li>
     </ul>
   </div>
-
-
   <section class="page-main">
     <div class="container page-mid">
       <h2>Welcome <span ng-show="currentUser">{{ currentUser.name }}</span>!</h2>
@@ -32,6 +24,24 @@
         <div class="col-sm-8">
           <div class="thumbnail">
 
+            <div flow-init="{target: '/api/upstream'}" flow-files-submitted="$flow.upload()" flow-file-added="!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]" class="ng-scope">
+              <div class="drop" flow-drop="" ng-class="dropClass">
+                <span class="btn btn-default" flow-btn>Upload Image
+                  <input type="file" multiple="multiple" style="visibility: hidden; position: absolute;" />
+                </span>
+                <span class="btn btn-default" flow-btn flow-directory ng-show="$flow.supportDirectory">Upload Folder of Images
+                  <input type="file" multiple="multiple" webkitdirectory="webkitdirectory" style="visibility: hidden; position: absolute;">
+                </span>
+                <b>OR</b>
+                Drag And Drop your images here
+              </div>
+              <br>
+              <div>
+                <!-- ngRepeat: file in $flow.files -->
+                <div class="clear">
+                </div>
+              </div>
+            </div>
 
           </div>
           <span fx-scroll-top="scroll2" fx-percent="percent2">{{scroll2}} {{percent2}}</span>
@@ -40,8 +50,8 @@
           <h3>Yeoman</h3>
           <p>
             Based on "generator-angular-fullstack" we're able to harness the generator concept
-            for building and creating tests etc, with the added benefits already baked in that
-            we can just call workflow or best practices.
+            for automation, with the added benefits already baked in that we can just call workflow
+            or best practices.
           </p>
           <em>This is a list of "awesomethings" that we benefit from the yeoman project.</em>
           <ul class="list-unstyled">
@@ -54,24 +64,25 @@
           </ul>
         </div>
         <div class="col-sm-4">
-          <progressbar value="percent1"></progressbar>
-
-
+          <progressbar value="percent1">
+          </progressbar>
           <div class="col-xs-half">
             <div class="thumbnail">
               <div class="inner">
                 <span fx-scroll-top="scroll1" fx-percent="percent1"></span>
-          
-
                 <picture data-alt="test">
-                <source srcset="http://placehold.it/350x350/6699CC/5577AA" data-media="(min-width: 1200px)"/>
-                <source srcset="http://placehold.it/283x350/6699CC/5577AA" data-media="(min-width: 992px)"/>
-                <source srcset="http://placehold.it/210x350/6699CC/5577AA" data-media="(min-width: 768px)"/>
-                <source srcset="http://placehold.it/336x200/6699CC/5577AA" data-media="(min-width: 481px)"/>
-                <source srcset="http://placehold.it/480x100/6699CC/5577AA" data-media="(min-width: 1px)"/>  
-                <img srcset="http://placehold.it/480x100/6699CC/5577AA" />    
+                  <source srcset="http://placehold.it/350x350/6699CC/5577AA" data-media="(min-width: 1200px)"
+                  />
+                  <source srcset="http://placehold.it/283x350/6699CC/5577AA" data-media="(min-width: 992px)"
+                  />
+                  <source srcset="http://placehold.it/210x350/6699CC/5577AA" data-media="(min-width: 768px)"
+                  />
+                  <source srcset="http://placehold.it/336x200/6699CC/5577AA" data-media="(min-width: 481px)"
+                  />
+                  <source srcset="http://placehold.it/480x100/6699CC/5577AA" data-media="(min-width: 1px)"
+                  />
+                  <img srcset="http://placehold.it/480x100/6699CC/5577AA" />
                 </picture>
-
               </div>
             </div>
           </div>
@@ -79,18 +90,29 @@
             <div class="thumbnail">
               <div class="inner">
                 <picture data-alt="test" class="pfill">
-                <source srcset="http://placehold.it/350x350/336699/6699CC" data-media="(min-width: 1200px)"/>
-                <source srcset="http://placehold.it/283x350/336699/6699CC" data-media="(min-width: 992px)"/>
-                <source srcset="http://placehold.it/210x350/336699/6699CC" data-media="(min-width: 768px)"/>
-                <source srcset="http://placehold.it/336x200/336699/6699CC" data-media="(min-width: 481px)"/>                
-                <source srcset="http://placehold.it/480x100/336699/6699CC" data-media="(min-width: 1px)"/>
-                <img srcset="http://placehold.it/480x100/336699/6699CC"/>
+                  <source srcset="http://placehold.it/350x350/336699/6699CC" data-media="(min-width: 1200px)"
+                  />
+                  <source srcset="http://placehold.it/283x350/336699/6699CC" data-media="(min-width: 992px)"
+                  />
+                  <source srcset="http://placehold.it/210x350/336699/6699CC" data-media="(min-width: 768px)"
+                  />
+                  <source srcset="http://placehold.it/336x200/336699/6699CC" data-media="(min-width: 481px)"
+                  />
+                  <source srcset="http://placehold.it/480x100/336699/6699CC" data-media="(min-width: 1px)"
+                  />
+                  <img srcset="http://placehold.it/480x100/336699/6699CC" />
                 </picture>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+
+  <hr/>
+
+
+
       <hr/>
       <div class="row">
         <div class="col-sm-4">
@@ -107,15 +129,9 @@
           <div class="well">
             <h3>Column 2</h3>
             <ul class="list-unstyled">
-              <li>
-                <a href="">Item 1</a>
-              </li>
-              <li>
-                <a href="">Item 2</a>
-              </li>
-              <li>
-                <a href="">Item 3</a>
-              </li>
+              <li><a href="">Item 1</a></li>
+              <li><a href="">Item 2</a></li>
+              <li><a href="">Item 3</a></li>
             </ul>
           </div>
         </div>
@@ -123,15 +139,9 @@
           <div class="well">
             <h3>Column 3</h3>
             <ul class="list-unstyled">
-              <li>
-                <a href="">Item 1</a>
-              </li>
-              <li>
-                <a href="">Item 2</a>
-              </li>
-              <li>
-                <a href="">Item 3</a>
-              </li>
+              <li><a href="">Item 1</a></li>
+              <li><a href="">Item 2</a></li>
+              <li><a href="">Item 3</a></li>
             </ul>
           </div>
         </div>

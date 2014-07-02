@@ -4,10 +4,14 @@ angular.module('ui.utils',[
   "ui.event",
   "ui.inflector",
   'ui.tree',
+  'flow',
+  'fx.elasto'
 ]);
 
-angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 'ui.utils', 
-  'ui.bootstrap', 'loggedin', 'angularFileUpload', 'textAngular', 'angular-carousel', 'filters', 'LocalStorageModule'])
+angular.module('angoApp', [
+  'ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', 
+  'ui.utils', 'ui.bootstrap', 'loggedin', 'angularFileUpload', 'textAngular', 
+  'angular-carousel', 'filters', 'LocalStorageModule'])
 
 .config(function($routeProvider, $locationProvider, $httpProvider) {
   
@@ -89,9 +93,7 @@ angular.module('angoApp', ['ngCookies', 'ngResource', 'ngSanitize', 'ngRoute', '
     $timeout(function(){
       picturefill({ reevaluate: true });
     }, 50);
-
   });
-
 
   $timeout(function(){
     picturefill({ reevaluate: true });

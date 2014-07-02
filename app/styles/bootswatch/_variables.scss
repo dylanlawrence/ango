@@ -346,12 +346,12 @@ $nav-pills-active-link-hover-color:         #fff;
 // Pagination
 // -------------------------
 
-$pagination-bg:                        $brand-success;
+$pagination-bg:                        $gray-light;
 $pagination-border:                    transparent;
 
 $pagination-hover-bg:                  $gray-lighter;
 
-$pagination-active-bg:                 darken($brand-success, 15%);
+$pagination-active-bg:                 darken($gray-light, 15%);
 $pagination-active-color:              #fff;
 
 $pagination-disabled-color:            $gray-lighter;

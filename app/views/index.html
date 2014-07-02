@@ -57,7 +57,6 @@
     <!-- Add your site or application content here -->
     <div id="navMain" class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavbarCtrl" ng-include="'partials/navbar'"></div>
 
-    
     <div id="all" ng-cloak>
         <span fx-scroll="scroll"></span>
         <div class="container" ng-include="'partials/alerts'"></div>
@@ -65,7 +64,6 @@
         <div ng-include="'partials/postscript'"></div>
         <div ng-include="'partials/footer'"></div>
     </div>
-
 
     <div ng-include="'partials/chat'"></div>
 
@@ -84,6 +82,7 @@
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
     <![endif]-->
+
 </body>
 
 <% for(var i=0; i<scripts.length; i++) { %>
@@ -110,11 +109,16 @@
 <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
 <script src="bower_components/angular-carousel/dist/angular-carousel.js"></script>
+<script src="bower_components/flow.js/dist/flow.js"></script>
+<script src="bower_components/ng-flow/dist/ng-flow.js"></script>
+<script src="bower_components/requestAnimationFrame-polyfill/requestAnimationFrame.js"></script>
 <!-- endbower -->
-  <script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.11.0.js"></script>
+<script src="bower_components/angular-ui-bootstrap/dist/ui-bootstrap-0.11.0.js"></script>
 <!-- endbuild -->
 
-<script>
+<script src="scripts/modules/fx.elasto.js"></script>
+
+<script type="text/javascript" >
 
 angular.module('loggedin',[
   "ui.ace",
@@ -151,9 +155,11 @@ angular.module('loggedin',[
 <script src="scripts/filters/filters.js"></script>
 <script src="scripts/controllers/media.js"></script>
 <script src="scripts/controllers/drupal.js"></script>
-<script src="scripts/services/animFrame.js"></script>
 <script src="scripts/controllers/tree.js"></script>
+<script src="scripts/services/tree.js"></script>
 <!-- endbuild -->
+
+<script src="bower_components/picturefill/dist/picturefill.js"></script>  
 
 <!--script src="bower_components/ng-ckeditor/libs/ckeditor/ckeditor.js"></script -->
 <!--
@@ -169,10 +175,6 @@ angular.module('loggedin',[
   
 </script>
 -->
-
-
- <script src="bower_components/picturefill/dist/picturefill.js"></script>  
-
 
 </body> 
 </html>

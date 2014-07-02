@@ -1,13 +1,58 @@
 
 <div class="inner">
 
+	<style type="text/css">
+		.well.block {
+			margin: 10px;
+			background: rgba(255,255,255,0.3);
+		}
+		.well.block .inner{
+			min-height:49px;
+		}
+		.split-left { padding: 0; }
+		.split-right { margin-top:-10px;}
+		@media (min-width:480px) { 
+			.well.block .inner{
+				min-height: 240px;
+			}
+
+			.split-left{ 
+				margin-right:-30px; margin-left: 15px
+			}
+			.split-left .well.block .inner{
+				min-height:96px;
+			}
+			.split-right {margin: 0}
+		}
+		@media (min-width: 768px) { 
+			
+			.well.block {
+				margin:10px 0 0 0;
+			}
+			.split-left{ margin: 0;}
+			.split-left .well.block .inner{
+				min-height: 240px;
+			}
+		}
+	</style>
 
 	<div class="container">
 		<div class="body-text">
-			<h1>Slide 1</h1>
-			<p class="lead">
-				<img src="images/logo-sm.png " alt="">
-			</p>
+			<div class="row">
+				<div class="col-xs-6 col-sm-8 split-left">		
+					<div class="col-sm-6">
+						<div class="block well">
+							<div class="inner">Column 1</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="block well"><div class="inner">Column 2</div></div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-sm-4 split-right">
+					<div class="block well"><div class="inner">Column 3</div></div>
+				</div>
+			</div>
 		</div>
 	</div>
 

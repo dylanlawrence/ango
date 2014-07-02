@@ -117,18 +117,16 @@ input[type="color"],
 	
 	a {
 		color: #fff;
-
 		&:hover {
 			color: $text-color;
 		}
 	}
-
 	.disabled {
 		&>a,
 		&>a:hover,
 		&>a:focus,
 		&>span {
-			background-color: lighten($brand-success, 15%);
+			background-color: lighten($brand-info, 15%);
 		}
 	}
 }
@@ -146,7 +144,7 @@ input[type="color"],
 		&>a:hover,
 		&>a:focus,
 		&>span {
-			background-color: lighten($brand-success, 15%);
+			background-color: lighten($brand-info, 15%);
 		}
 	}
 }

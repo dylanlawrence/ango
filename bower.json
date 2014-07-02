@@ -25,7 +25,9 @@
     "picturefill": "~2.0.0",
     "font-awesome": "~4.1.0",
     "angular-ui-tree": "~2.1.4",
-    "angular-carousel": "~0.2.3"
+    "angular-carousel": "~0.2.3",
+    "ng-flow": "~2",
+    "requestAnimationFrame-polyfill": "*"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",

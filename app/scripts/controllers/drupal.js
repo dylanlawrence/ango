@@ -6,5 +6,5 @@ angular.module('angoApp')
 	$http.get('/api/hazards').success(function(hazards) {
 		$scope.hazards = hazards;
 	});
-	
+
   }]);

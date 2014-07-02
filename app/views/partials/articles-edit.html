@@ -10,7 +10,7 @@
           <li class="list-group-item clearfix" ng-repeat="item in mediaDisplay">
             <div class="pull-right">
               <button type="button" class="btn btn-link" ng-click="unSelectMedia(item._id);">
-                <i class="fa fa-trash-o">
+                <i class="fa fa-times">
                 </i>
               </button>
             </div>
@@ -24,8 +24,8 @@
         </ul>
       </div>
     </section>
-    <section class="col-sm-8">
 
+    <section class="col-sm-8">
 
       <form class="form-horizontal" ng-submit="update()">
         <input type="hidden" ng-model="article.media" />
@@ -53,6 +53,7 @@
             theme:'cobalt',
             mode: 'html'
           }" ng-model="article.content" >
+
           </div>
           </div>
 

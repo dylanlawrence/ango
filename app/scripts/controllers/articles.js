@@ -1,5 +1,8 @@
 'use strict';
-angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 'Files', '$timeout', '$q', function($scope, $routeParams, $location, Global, Articles, Files, $timeout, $q) {
+
+angular.module('angoApp')
+.controller('ArticlesCtrl', ['$scope', '$routeParams', '$location', 'Global', 'Articles', 'Files', '$timeout', '$q', 
+    function($scope, $routeParams, $location, Global, Articles, Files, $timeout, $q) {
 
     $scope.global = Global;
     $scope.article = {
@@ -9,9 +12,9 @@ angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', 
     $scope.open = function($event) {
         $event.preventDefault();
         $event.stopPropagation();
-
         $scope.opened = true;
     };
+
     $scope.dateOptions = {
         'year-format': "'yy'",
         'starting-day': 1
@@ -44,6 +47,7 @@ angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', 
         this.content = '';
         this.media = '';
     };
+
     $scope.findOne = function() {
         $scope.article = {
             'media': []
@@ -65,6 +69,7 @@ angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', 
             });
         });
     };
+
     $scope.update = function() {
         console.debug($scope.article);
         var article = $scope.article;
@@ -77,6 +82,7 @@ angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', 
             $location.path('articles/' + article._id);
         });
     };
+
     $scope.remove = function(article) {
         if (article) {
             article.$remove();
@@ -90,9 +96,11 @@ angular.module('angoApp').controller('ArticlesCtrl', ['$scope', '$routeParams', 
             $location.path('article');
         }
     };
+
     $scope.find = function() {
         Articles.query(function(articles) {
             $scope.articles = articles;
         });
     };
+
 }]);

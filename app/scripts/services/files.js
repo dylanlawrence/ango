@@ -60,8 +60,6 @@ angular.module('angoApp').service('Files', ['$rootScope', '$http', '$fileUploade
 
   }
 
-
-
   this.selectMedia = function(id) {
       _this.selected.push(id);
       _this.setSelected(_this.selected);
@@ -86,7 +84,9 @@ angular.module('angoApp').service('Files', ['$rootScope', '$http', '$fileUploade
    */
   this.uploader = null;
   this.getUploader = function() {
+
     if (_this.uploader) return _this.uploader;
+
     var uploader = _this.uploader = $fileUploader.create({
       scope: $rootScope,
       url: '/api/upload'

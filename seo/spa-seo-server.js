@@ -8,6 +8,7 @@ if (system.args.length < 3) {
 var server = require('webserver').create();
 var port = parseInt(system.args[1]);
 var urlPrefix = system.args[2];
+
 var parse_qs = function(s) {
         var queryString = {};
         var a = document.createElement("a");
@@ -18,6 +19,7 @@ var parse_qs = function(s) {
         });
         return queryString;
     };
+
 var renderHtml = function(url, cb) {
         var page = require('webpage').create();
         page.settings.loadImages = false;
@@ -42,22 +44,28 @@ var renderHtml = function(url, cb) {
     };
 
 server.listen(port, function(request, response) {
-    var route = parse_qs(request.url)._escaped_fragment_;
+   
+   var route = parse_qs(request.url)._escaped_fragment_;
+    
     file = '/home/dylan/demo/snapshots' + route + '.html';
     
     if (fs.isFile(file)) {
+
         response.statusCode = 200;
         response.write(fs.read(file));
         response.close();
-    }
 
-    var url = urlPrefix + request.url.slice(1, request.url.indexOf('?')) + '#!' + decodeURIComponent(route);
-    console.log('url ' + url);
-    renderHtml(url, function(html) {
-        response.statusCode = 200;
-        response.write(html);
-        response.close();
-    });
+    }else{
+
+        var url = urlPrefix + request.url.slice(1, request.url.indexOf('?')) + '#!' + decodeURIComponent(route);
+        console.log('url ' + url);
+
+        renderHtml(url, function(html) {
+            response.statusCode = 200;
+            response.write(html);
+            response.close();
+        });
+    }
 });
 
 console.log('Listening on ' + port + '...');

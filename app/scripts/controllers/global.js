@@ -80,8 +80,6 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 		$scope.navMainBtn = c;
 	}
 
-
-
 	$scope.$route = $route;
 	$scope.$location = $location;
 	$scope.$routeParams = $routeParams;
@@ -91,18 +89,15 @@ angular.module('angoApp').controller('GlobalCtrl', ['$scope', '$rootScope', '$ht
 		var path = $location.path();
 		var context = path.replace(/\//g,'');
 		$scope.bodyClassObj.context = inflector('page-'+context, 'underscore');
-
 		$scope.title = "Ango - " + context;
 	});
 
 
 	$scope.getBodyClass = function() {
-
 		var c = [];
 		angular.forEach($scope.bodyClassObj, function(value, key){
 			c.push(value);
 		});
-
 		return c;
 	}
 

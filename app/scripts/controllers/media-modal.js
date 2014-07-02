@@ -4,15 +4,13 @@ angular.module('angoApp').controller('MediaModalCtrl', ['$scope', '$rootScope', 
   
   $scope.uploader = Files.getUploader();
   $scope.scope = "MediaModal";
-  
+
+  // Pagination  
   $scope.currPage = 1;
   $scope.limit = 12;
   $scope.offset = 0;
 
-  $scope.paginate = function(page) {
-    $scope.offset = (page-1) * 12;
-  };
-  
+  // Tabs of for media types
   $scope.tabs = [{
     icon: 'fa-folder',
     title: 'Media Files',

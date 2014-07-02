@@ -1,6 +1,7 @@
 node_modules
 public
 .tmp
+tmp
 .sass-cache
 lib/config/env
 app/bower_components

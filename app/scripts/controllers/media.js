@@ -15,7 +15,7 @@ angular.module('angoApp').controller('MediaCtrl', ['$scope', '$rootScope', 'File
     icon: 'fa-code',
     title: "Embeded Sources",
     template: "partials/media-embeded.html"
-  }, ];
+  }];
 
   Files.getAll();
   $scope.mediaFiles = Files.mediaFiles || [];
